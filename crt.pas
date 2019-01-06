@@ -1,0 +1,417 @@
+{$ifdef WIN32}
+
+unit crt;
+
+interface
+
+type
+	tcrtcoord = 1..255;
+
+procedure AssignCrt(var F: Text);
+procedure ClrEol;
+procedure ClrScr;
+procedure cursorbig;
+procedure cursoroff;
+procedure cursoron;
+procedure Delay(MS: WORD);
+procedure DelLine;
+procedure GotoXY(X: tcrtcoord; Y: tcrtcoord);
+procedure HighVideo;
+procedure InsLine;
+function KeyPressed: Boolean;
+procedure LowVideo;
+procedure NormVideo;
+procedure NoSound;
+function ReadKey: Char;
+procedure Sound(Hz: Word);
+procedure TextBackground(Color: Byte);
+procedure TextColor(Color: Byte);
+procedure TextMode(Mode: WORD);
+function WhereX: tcrtcoord;
+function WhereY: tcrtcoord;
+procedure Window(X1: Byte; Y1: Byte; X2: Byte; Y2: Byte);
+
+implementation
+
+uses
+	Sysutils,
+	Strings,
+	Windows;
+
+const
+	WIDTH = 80;
+	HEIGHT = 26;
+	SPACE = '                                                                                ';
+
+var
+	output: Handle;
+	input: Handle;
+	wx: Longint;
+	wy: Longint;
+	fore_color: WORD;
+	back_color: WORD;
+	last_key: Char;
+
+procedure AssignCrt(var F: Text);
+begin
+end;
+
+procedure ClrEol;
+var
+	info: TConsoleScreenBufferinfo;
+	n: DWORD;
+begin
+	GetConsoleScreenBufferInfo(output, info);
+	WriteConsoleOutputCharacter(output, SPACE, WIDTH - info.dwCursorPosition.X, info.dwCursorPosition, n);
+	SetConsoleCursorPosition(output, info.dwCursorPosition);
+end;
+
+procedure ClrScr;
+var
+	info: TConsoleScreenBufferinfo;
+	written: DWORD;
+	xy: Coord;
+begin
+	xy.x := 0;
+	xy.y := 0;
+
+	GetConsoleScreenBufferInfo(output, info);
+	FillConsoleOutputCharacter(output, Char(' '), info.dwSize.X * info.dwSize.Y, xy, written);
+	FillConsoleOutputAttribute(output, info.wAttributes, info.dwSize.X * info.dwSize.Y, xy, written);
+	GotoXY(1, 1);
+end;
+
+procedure cursorbig;
+begin
+end;
+
+procedure cursoroff;
+var
+	info: CONSOLE_CURSOR_INFO;
+begin
+	GetConsoleCursorInfo(output, info);
+	info.bVisible := false;
+	SetConsoleCursorInfo(output, info);
+end;
+
+procedure cursoron;
+var
+	info: CONSOLE_CURSOR_INFO;
+begin
+	GetConsoleCursorInfo(output, info);
+	info.bVisible := true;
+	SetConsoleCursorInfo(output, info);
+end;
+
+procedure Delay(MS: Word);
+begin
+{
+	Sleep(MS);
+}
+end;
+
+procedure DelLine;
+var
+	info: TConsoleScreenBufferinfo;
+	rect: SMALL_RECT;
+	clip: SMALL_RECT;
+	xy: Coord;
+	c: CHAR_INFO;
+begin
+	GetConsoleScreenBufferInfo(output, info);
+	rect.Left := 0;
+	rect.Top := info.dwCursorPosition.Y + 1;
+	rect.Right := WIDTH - 1;
+	rect.Bottom := HEIGHT - 1;
+	clip.Left := 0;
+	clip.Top := 0;
+	clip.Right := WIDTH - 1;
+	clip.Bottom := HEIGHT - 1;
+	xy.x := 0;
+	xy.y := info.dwCursorPosition.Y;
+	c.Attributes := 0;
+
+	ScrollConsoleScreenBuffer(output, rect, clip, xy, c);
+end;
+
+procedure GotoXY(X: tcrtcoord; Y: tcrtcoord);
+var
+	xy: Coord;
+begin
+	xy.x := X + wx - 1;
+	xy.y := Y + wy - 1;
+
+	SetConsoleCursorPosition(output, xy);
+end;
+
+procedure HighVideo;
+begin
+end;
+
+procedure InsLine;
+var
+	info: TConsoleScreenBufferinfo;
+	rect: SMALL_RECT;
+	clip: SMALL_RECT;
+	xy: Coord;
+	c: CHAR_INFO;
+begin
+	GetConsoleScreenBufferInfo(output, info);
+	rect.Left := 0;
+	rect.Top := info.dwCursorPosition.Y;
+	rect.Right := WIDTH - 1;
+	rect.Bottom := HEIGHT - 1;
+	clip.Left := 0;
+	clip.Top := 0;
+	clip.Right := WIDTH - 1;
+	clip.Bottom := HEIGHT - 1;
+	xy.x := 0;
+	xy.y := info.dwCursorPosition.Y + 1;
+	c.Attributes := 0;
+
+	ScrollConsoleScreenBuffer(output, rect, clip, xy, c);
+end;
+
+function KeyPressed: Boolean;
+begin
+	Sleep(1);
+
+	last_key := #0;
+
+	if((GetAsyncKeyState(VK_BACK) and $8000) <> 0) then last_key := #$08;
+	if((GetAsyncKeyState(VK_TAB) and $8000) <> 0) then last_key := #$09;
+	if((GetAsyncKeyState(VK_RETURN) and $8000) <> 0) then last_key := #$13;
+	if((GetAsyncKeyState(VK_SPACE) and $8000) <> 0) then last_key := ' ';
+	if((GetAsyncKeyState(VK_0) and $8000) <> 0) then last_key := '0';
+	if((GetAsyncKeyState(VK_1) and $8000) <> 0) then last_key := '1';
+	if((GetAsyncKeyState(VK_2) and $8000) <> 0) then last_key := '2';
+	if((GetAsyncKeyState(VK_3) and $8000) <> 0) then last_key := '3';
+	if((GetAsyncKeyState(VK_4) and $8000) <> 0) then last_key := '4';
+	if((GetAsyncKeyState(VK_5) and $8000) <> 0) then last_key := '5';
+	if((GetAsyncKeyState(VK_6) and $8000) <> 0) then last_key := '6';
+	if((GetAsyncKeyState(VK_7) and $8000) <> 0) then last_key := '7';
+	if((GetAsyncKeyState(VK_8) and $8000) <> 0) then last_key := '8';
+	if((GetAsyncKeyState(VK_9) and $8000) <> 0) then last_key := '9';
+	if((GetAsyncKeyState(VK_A) and $8000) <> 0) then last_key := 'A';
+	if((GetAsyncKeyState(VK_B) and $8000) <> 0) then last_key := 'B';
+	if((GetAsyncKeyState(VK_C) and $8000) <> 0) then last_key := 'C';
+	if((GetAsyncKeyState(VK_D) and $8000) <> 0) then last_key := 'D';
+	if((GetAsyncKeyState(VK_E) and $8000) <> 0) then last_key := 'E';
+	if((GetAsyncKeyState(VK_F) and $8000) <> 0) then last_key := 'F';
+	if((GetAsyncKeyState(VK_G) and $8000) <> 0) then last_key := 'G';
+	if((GetAsyncKeyState(VK_H) and $8000) <> 0) then last_key := 'H';
+	if((GetAsyncKeyState(VK_I) and $8000) <> 0) then last_key := 'I';
+	if((GetAsyncKeyState(VK_J) and $8000) <> 0) then last_key := 'J';
+	if((GetAsyncKeyState(VK_K) and $8000) <> 0) then last_key := 'K';
+	if((GetAsyncKeyState(VK_L) and $8000) <> 0) then last_key := 'L';
+	if((GetAsyncKeyState(VK_M) and $8000) <> 0) then last_key := 'M';
+	if((GetAsyncKeyState(VK_N) and $8000) <> 0) then last_key := 'N';
+	if((GetAsyncKeyState(VK_O) and $8000) <> 0) then last_key := 'O';
+	if((GetAsyncKeyState(VK_P) and $8000) <> 0) then last_key := 'P';
+	if((GetAsyncKeyState(VK_Q) and $8000) <> 0) then last_key := 'Q';
+	if((GetAsyncKeyState(VK_R) and $8000) <> 0) then last_key := 'R';
+	if((GetAsyncKeyState(VK_S) and $8000) <> 0) then last_key := 'S';
+	if((GetAsyncKeyState(VK_T) and $8000) <> 0) then last_key := 'T';
+	if((GetAsyncKeyState(VK_U) and $8000) <> 0) then last_key := 'U';
+	if((GetAsyncKeyState(VK_V) and $8000) <> 0) then last_key := 'V';
+	if((GetAsyncKeyState(VK_W) and $8000) <> 0) then last_key := 'W';
+	if((GetAsyncKeyState(VK_X) and $8000) <> 0) then last_key := 'X';
+	if((GetAsyncKeyState(VK_Y) and $8000) <> 0) then last_key := 'Y';
+	if((GetAsyncKeyState(VK_Z) and $8000) <> 0) then last_key := 'Z';
+	if((GetAsyncKeyState(VK_NUMPAD0) and $8000) <> 0) then last_key := '0';
+	if((GetAsyncKeyState(VK_NUMPAD1) and $8000) <> 0) then last_key := '1';
+	if((GetAsyncKeyState(VK_NUMPAD2) and $8000) <> 0) then last_key := '2';
+	if((GetAsyncKeyState(VK_NUMPAD3) and $8000) <> 0) then last_key := '3';
+	if((GetAsyncKeyState(VK_NUMPAD4) and $8000) <> 0) then last_key := '4';
+	if((GetAsyncKeyState(VK_NUMPAD5) and $8000) <> 0) then last_key := '5';
+	if((GetAsyncKeyState(VK_NUMPAD6) and $8000) <> 0) then last_key := '6';
+	if((GetAsyncKeyState(VK_NUMPAD7) and $8000) <> 0) then last_key := '7';
+	if((GetAsyncKeyState(VK_NUMPAD8) and $8000) <> 0) then last_key := '8';
+	if((GetAsyncKeyState(VK_NUMPAD9) and $8000) <> 0) then last_key := '9';
+	if((GetAsyncKeyState(VK_MULTIPLY) and $8000) <> 0) then last_key := '*';
+	if((GetAsyncKeyState(VK_ADD) and $8000) <> 0) then last_key := '+';
+	if((GetAsyncKeyState(VK_SUBTRACT) and $8000) <> 0) then last_key := '-';
+	if((GetAsyncKeyState(VK_DECIMAL) and $8000) <> 0) then last_key := '/';
+	if((GetAsyncKeyState(VK_DIVIDE) and $8000) <> 0) then last_key := '.';
+
+	keyPressed := (last_key <> #0);
+end;
+
+procedure LowVideo;
+begin
+end;
+
+procedure NormVideo;
+begin
+end;
+
+procedure NoSound;
+begin
+end;
+
+function ReadKey: Char;
+var
+	buf: Pchar;
+	n: DWORD;
+begin
+	if (last_key <> #0) then
+	begin
+		ReadKey := last_key;
+		last_key := #0;
+		FlushConsoleInputBuffer(input);
+		exit;
+	end;
+
+	SetConsoleMode(input, ENABLE_PROCESSED_INPUT);
+	buf := stralloc(8);
+	ReadConsole(input, buf, 1, n, nil);
+	ReadKey := String(buf)[1];
+	strdispose(buf);
+	SetConsoleMode(input, ENABLE_PROCESSED_INPUT or ENABLE_LINE_INPUT or ENABLE_ECHO_INPUT);
+end;
+
+procedure Sound(Hz: Word);
+begin
+end;
+
+procedure TextBackground(Color: Byte);
+begin
+	case Color of
+		0: fore_color := 0;
+		1: fore_color := BACKGROUND_BLUE;
+		2: fore_color := BACKGROUND_GREEN;
+		3: fore_color := BACKGROUND_BLUE or BACKGROUND_GREEN;
+		4: fore_color := BACKGROUND_RED;
+		5: fore_color := BACKGROUND_RED or BACKGROUND_BLUE;
+		6: fore_color := BACKGROUND_RED or BACKGROUND_GREEN;
+		7: fore_color := BACKGROUND_RED or BACKGROUND_BLUE or BACKGROUND_GREEN;
+		8: fore_color := BACKGROUND_INTENSITY;
+		9: fore_color := BACKGROUND_INTENSITY or BACKGROUND_BLUE;
+		10: fore_color := BACKGROUND_INTENSITY or BACKGROUND_GREEN;
+		11: fore_color := BACKGROUND_INTENSITY or BACKGROUND_BLUE or BACKGROUND_GREEN;
+		12: fore_color := BACKGROUND_INTENSITY or BACKGROUND_RED;
+		13: fore_color := BACKGROUND_INTENSITY or BACKGROUND_RED or BACKGROUND_BLUE;
+		14: fore_color := BACKGROUND_INTENSITY or BACKGROUND_RED or BACKGROUND_GREEN;
+		15: fore_color := BACKGROUND_INTENSITY or BACKGROUND_RED or BACKGROUND_BLUE or BACKGROUND_GREEN;
+		else exit;
+	end;
+
+	SetConsoleTextAttribute(output, fore_color or back_color);
+end;
+
+procedure TextColor(Color: Byte);
+begin
+	case Color of
+		0: back_color := 0;
+		1: back_color := FOREGROUND_BLUE;
+		2: back_color := FOREGROUND_GREEN;
+		3: back_color := FOREGROUND_BLUE or FOREGROUND_GREEN;
+		4: back_color := FOREGROUND_RED;
+		5: back_color := FOREGROUND_RED or FOREGROUND_BLUE;
+		6: back_color := FOREGROUND_RED or FOREGROUND_GREEN;
+		7: back_color := FOREGROUND_RED or FOREGROUND_BLUE or FOREGROUND_GREEN;
+		8: back_color := FOREGROUND_INTENSITY;
+		9: back_color := FOREGROUND_INTENSITY or FOREGROUND_BLUE;
+		10: back_color := FOREGROUND_INTENSITY or FOREGROUND_GREEN;
+		11: back_color := FOREGROUND_INTENSITY or FOREGROUND_BLUE or FOREGROUND_GREEN;
+		12: back_color := FOREGROUND_INTENSITY or FOREGROUND_RED;
+		13: back_color := FOREGROUND_INTENSITY or FOREGROUND_RED or FOREGROUND_BLUE;
+		14: back_color := FOREGROUND_INTENSITY or FOREGROUND_RED or FOREGROUND_GREEN;
+		15: back_color := FOREGROUND_INTENSITY or FOREGROUND_RED or FOREGROUND_BLUE or FOREGROUND_GREEN;
+		else exit;
+	end;
+
+	SetConsoleTextAttribute(output, fore_color or back_color);
+end;
+
+procedure TextMode(Mode: WORD);
+begin
+end;
+
+function WhereX: tcrtcoord;
+var
+	info: TConsoleScreenBufferinfo;
+begin
+	GetConsoleScreenBufferInfo(output, info);
+	WhereX := info.dwCursorPosition.X - wx + 1;
+end;
+
+function WhereY: tcrtcoord;
+var
+	info: TConsoleScreenBufferinfo;
+begin
+	GetConsoleScreenBufferInfo(output, info);
+	WhereY := info.dwCursorPosition.Y - wy + 1;
+end;
+
+procedure Window(X1: Byte; Y1: Byte; X2: Byte; Y2: Byte);
+begin
+	wx := X1 - 1;
+	wy := Y1 - 1;
+	GotoXY(1, 1);
+end;
+
+procedure init;
+var
+	xy: Coord;
+	r: SMALL_RECT;
+begin
+	output := GetStdHandle(STD_OUTPUT_HANDLE);
+	input := GetStdHandle(STD_INPUT_HANDLE);
+	SetConsoleMode(output, ENABLE_PROCESSED_OUTPUT or ENABLE_WRAP_AT_EOL_OUTPUT);
+	SetConsoleMode(input, ENABLE_PROCESSED_INPUT or ENABLE_LINE_INPUT or ENABLE_ECHO_INPUT);
+
+	xy.x := WIDTH;
+	xy.y := HEIGHT;
+	SetConsoleScreenBufferSize(output, xy);
+
+	r.Top := 0;
+	r.Left := 0;
+	r.Right := WIDTH - 1;
+	r.Bottom := HEIGHT - 1;
+	SetConsoleWindowInfo(output, true, r);
+
+	back_color := 0;
+	fore_color := 0;
+	TextBackground(0);
+	TextColor(7);
+
+	last_key := #0;
+end;
+
+initialization
+	init;
+
+finalization
+	TextBackground(0);
+	TextColor(7);
+end.
+
+{$endif}
+
+{
+	Copyright 2019 maruhiro
+	All rights reserved. 
+
+	Redistribution and use in source and binary forms, 
+	with or without modification, are permitted provided that 
+	the following conditions are met: 
+
+	 1. Redistributions of source code must retain the above copyright notice, 
+	    this list of conditions and the following disclaimer. 
+
+	 2. Redistributions in binary form must reproduce the above copyright notice, 
+	    this list of conditions and the following disclaimer in the documentation 
+	    and/or other materials provided with the distribution. 
+
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+	FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
+	THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+	SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+	PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
+	OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+	WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
+	OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+	ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+}

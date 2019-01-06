@@ -12,7 +12,7 @@ echo.
 echo -------------------------------------------------------------------------------
 echo Compiling BEYOND.EXE ...
 echo.
-ppc386 -Mtp -O3 -Xt BEYOND.PAS -oBEYOND.EXE
+ppc386 -O3 -Xt -dASCII_TERMINAL BEYOND.PAS -oBEYOND.EXE
 
 echo.
 echo -------------------------------------------------------------------------------

@@ -33,7 +33,7 @@
                        {VERB LIST:  GROUPS ALL SYNONYMS}
 procedure Assign1;
 begin
-for x:= 0 to VMax do for y:= 1 to 5 do v[x,y]:=Q;
+for x:= 0 to VMax do for y:= 1 to 10 do v[x,y]:=Q;
 v[0,1]:='attack'; v[0,2]:='kill';v[0,3]:='beat up';
 v[1,1]:='descrip';v[1,2]:='rd';v[1,3]:='r d';
 v[2,1]:='climb';v[2,2]:='climb on';v[2,3]:='climb onto';v[2,4]:='climb in';
@@ -71,6 +71,7 @@ v[19,1]:='jump';v[19,2]:='jump onto';v[19,3]:='jump on';v[19,4]:='jump off';
    v[19,5]:='jump in';
 v[20,1]:='launch';v[20,2]:='sail';v[20,3]:='row';
 v[22,1]:='look';v[22,2]:='l';v[22,3]:='look around';v[22,4]:='ex area';
+v[22,5]:='å©ÇÈ';v[22,6]:='Ç›ÇÈ';
 v[23,1]:='look above';v[23,2]:='ex on';v[23,3]:='look on';
    v[23,4]:='ex top';v[23,5]:='ex above';
 v[24,1]:='look in';v[24,2]:='ex in';v[24,3]:='look down';v[24,4]:='look up';
@@ -106,16 +107,26 @@ v[40,1]:='unlock';
 v[41,1]:='wait';v[41,2]:='z';v[41,3]:='rest';
 v[42,1]:='wear';v[42,2]:='put on';
 v[43,1]:='north';v[43,2]:='n';v[43,3]:='fore';v[43,4]:='f';v[43,5]:='across';
+   v[43,6]:='ñk';v[43,7]:='Ç´ÇΩ';
 v[44,1]:='south';v[44,2]:='s';v[44,3]:='aft';v[44,4]:='a';
+   v[44,5]:='ìÏ';v[44,6]:='Ç›Ç»Ç›';
 v[45,1]:='east';v[45,2]:='e';v[45,3]:='starboa';v[45,4]:='st';
+   v[45,5]:='ìå';v[45,6]:='Ç–Ç™Çµ';
 v[46,1]:='west';v[46,2]:='w';v[46,3]:='port';v[46,4]:='p';
+   v[46,5]:='êº';v[46,6]:='Ç…Çµ';
 v[47,1]:='north east';v[47,2]:='ne';v[47,3]:='northea';
+   v[47,4]:='ñkìå';v[47,5]:='ÇŸÇ≠Ç∆Ç§';
 v[48,1]:='north west';v[48,2]:='nw';v[48,3]:='northwe';
+   v[48,4]:='ñkêº';v[48,5]:='ÇŸÇ≠ÇπÇ¢';
 v[49,1]:='south east';v[49,2]:='se';v[49,3]:='southea';
+   v[49,4]:='ìÏìå';v[49,5]:='Ç»ÇÒÇ∆Ç§';
 v[50,1]:='south west';v[50,2]:='sw';v[50,3]:='southwe';
+   v[50,4]:='ìÏêº';v[50,5]:='Ç»ÇÒÇπÇ¢';
 v[51,1]:='up';v[51,2]:='u';v[51,3]:='climb up';v[51,4]:='climb u';
+   v[51,5]:='è„';v[51,6]:='Ç§Ç¶';
 v[52,1]:='down';v[52,2]:='d';v[52,3]:='climb down';v[52,4]:='climb d';
    v[52,5]:='lower';
+   v[52,6]:='â∫';v[52,7]:='ÇµÇΩ';
 v[53,1]:='type';v[53,2]:='type in';
 v[54,1]:='quit';v[54,2]:='stop';v[54,3]:='give up';v[54,4]:='i quit';
 v[55,1]:='take off';v[55,2]:='remove';
@@ -140,7 +151,7 @@ v[65,1]:='restore';v[65,2]:='resume';
 
                      {NOUN LIST:  GROUPS ALL OBJECTS}
 
-for x:= 0 to NMax do for y:= 1 to 5 do n[x,y]:=Q;
+for x:= 0 to NMax do for y:= 1 to 10 do n[x,y]:=Q;
 n[0,1]:='alien';n[0,2]:='dead alien';n[0,3]:='body';n[0,4]:='alien body';
 n[1,1]:='all';n[1,2]:='everyth';n[1,3]:='object';n[1,4]:='objects';
 n[2,1]:='banana';n[2,2]:='food';

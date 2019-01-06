@@ -156,7 +156,7 @@ procedure DescribeRm;
    begin SA;
 if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
      case Prm of
-0:s('Ship''s Fore');1:s('Ship Mid-Deck');2:s('Rear of Ship');
+0:s('船の前方');1:s('Ship Mid-Deck');2:s('Rear of Ship');
 3:s('Life Boat');4:s('Ocean Surface');5:s('Huge Cavern');
 6:s('Cave of Pins');7:s('Ocean Bottom');8:s('Squeaky Cave');
 9:s('Stream Bend');10:s('Waterfall');13:s('Sloppy Cave');
@@ -268,7 +268,7 @@ procedure SAVE;
     for y:= 1 to 5 do
      write(WordList,n[x,y]);
    for x:= 0 to VMax do
-    for y:= 1 to 5 do
+    for y:= 1 to 10 do
      write(WordList,v[x,y]);
    close(WordList);
    assign(Things,input+'.d');
@@ -338,7 +338,7 @@ procedure RESTORE;
       for y:= 1 to 5 do
        read(WordList,n[x,y]);
      for x:= 0 to VMax do
-      for y:= 1 to 5 do
+      for y:= 1 to 10 do
        read(WordList,v[x,y]);
      close(WordList);
      assign(Things,input+'.d');
@@ -526,24 +526,24 @@ procedure Initialize;
  end;
   begin
    textcolor(15);
-   writeln('Prepare to engage yourself in a most exciting adventure.');
-   writeln('But first, two simple questions:');
-   gotoxy(1,4);write('Are you using a COLOR screen (Y/N)? ');
+   writeln('冒険の世界へ飛び込む準備をしてください。');
+   writeln('でも、その前に簡単な質問が2つあります:');
+   gotoxy(1,4);write('ディスプレイはカラーですか (Y/N)? ');
    nosound; play(72,80,45);
    flag := readkey; play(2500,2490,6);
    m0:=20;m1:=14;m2:=11;m3:=4;m4:=15;m5:=28;m6:=1;m7:=4;m8:=10;m9:=10;
    if upcase(flag)='N' then
     begin
-     writeln('No, I don''t have a color screen.');
+     writeln('いいえ。カラーではありません。');
      m0:=31;m1:=15;m2:=15;m3:=7;m4:=0;m5:=31;m6:=7;m7:=8;m8:=7;m9:=0;
-    end else writeln('Yes, I do have a color screen.');writeln;
-   write('How many disk drives do you have (1/2)? ');
+    end else writeln('はい。カラーです。');writeln;
+   write('ディスクドライブはいくつありますか (1/2)? ');
    play(80,88,30);
    flag := readkey; play(2500,2490,6);
    Drive:='B:';
    if(upcase(flag)='O')or(flag='1')then
-    begin Drive:='A:';writeln('I have ONE disk drive.')end else
-    writeln('I have TWO disk drives.');
+    begin Drive:='A:';writeln('1つです。')end else
+    writeln('2つです。');
    delay(999);clrscr;textcolor(15);gotoxy(1,5);writeln;textcolor(7);
    cn('Beyond the Titanic');textcolor(6);cn('------------------');writeln;
    textcolor(7);
@@ -552,7 +552,7 @@ procedure Initialize;
    cn('Written and Programmed by Scott Miller');
    textcolor(11);
    gotoxy(32,24);textcolor(7);
-   write('Press any key...');flag := readkey;clrscr;
+   write('キーを押してください');flag := readkey;clrscr;
 
    {                      *** SHAREWARE SCREEN ***                            }
 
@@ -583,7 +583,7 @@ procedure Initialize;
    gotoxy(23,25);
    delay(3000);
    while keypressed do readkey;
-   write('Press any key to start the game...');
+   write('キーを押すとゲームが始まります');
    readkey;
    while keypressed do readkey;
    clrscr;
@@ -591,20 +591,18 @@ procedure Initialize;
    Window(1,2,80,25);
    gotoxy(1,24);
    TextColor(m1);
-cn('APRIL 14, 1912    11:43 PM');
-cn('You never knew the black canvas of the night was so full'+
-   ' of twinkling detail.');
-cn('Standing on deck of the White Star''s new super luxury liner, deep at sea,');
-cn('where the bright lights of San Francisco don''t fade the night, you');
-cn('can view thousands of stars you never realized existed.');
-cn('Looking out over the icy sea you can barely see small pieces of'+
-   ' broken ice');
-cn('bobbing in the water.  Rumor has it that icebergs the size of small');
-cn('mountains can be found in this region.  You don''t feel');
-cn('too worried, though, the Titanic has been touted as');
-cn('"unsinkable," and every single passenger knows');
-cn('that White Star, the premier ship builder,');
-cn('knows their stuff...');
+cn('1912年4月14日     午後11時43分');
+cn('');
+cn('闇夜のカンバスがこれほど輝いていたとは。');
+cn('ホワイトスターの最新の豪華客船、深い海、');
+cn('サンフラインシスコのまばゆい光も届かないこの場所で');
+cn('幾千もの知られざる星々を見ていた。');
+cn('');
+cn('海に目をやると小さな氷の破片が漂っていた。');
+cn('このあたりには小さな山ほどの氷山が現れるとうわさだ。');
+cn('');
+cn('だが心配することはない。タイタニック号は「不沈」、');
+cn('一流の海運会社ホワイトスターとその船のことは乗客の誰もが信頼していた…');
 for x:= 1 to 3 do writeln;
 Line        :='';
 LastNoun    :='';

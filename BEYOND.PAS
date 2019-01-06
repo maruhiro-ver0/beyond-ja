@@ -77,8 +77,8 @@ var
      Input,
      Again,
      Line           : Str80;
-     V{erb}         : array [0..VMax,1..5] of Str16;
-     N{oun}         : array [0..NMax,1..5] of Str16;
+     V{erb}         : array [0..VMax,1..10] of Str16;
+     N{oun}         : array [0..NMax,1..10] of Str16;
      R{oom}         : array [0..NMax] of integer;
      P{lace}        : array [0..RMax] of PlayersObjects;
      RmSh           : set of 0..14;
@@ -1720,7 +1720,7 @@ Case Prm of
 
 0         :case verb of
    45     :MoveTo(1);
-   44     :begin TextColor(m8);writeln('Casino Hall');TextColor(m2);RS(0)end;
+   44     :begin TextColor(m8);writeln('カジノホール');TextColor(m2);RS(0)end;
   19,2    :if(noun in[53,6,64,73])then begin RL(0);DEAD;end;
   11    :if(noun=73)then RL(19);
          end;
@@ -1808,7 +1808,7 @@ function chr_p(c : byte) : char;
   begin
 {$ifdef ASCII_TERMINAL}
     case (c) of
-      175: chr_p := '>'; // as ﾂｻ
+      175: chr_p := '>'; // as ≫
     else
       chr_p := chr(c);
     end;

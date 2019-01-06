@@ -12,7 +12,7 @@ echo.
 echo -------------------------------------------------------------------------------
 echo Compiling BEYOND.EXE ...
 echo.
-ppcrossx64 -Mtp -O3 -Xt BEYOND.PAS -oBEYOND.EXE
+ppcrossx64 -O3 -Xt -dASCII_TERMINAL BEYOND.PAS -oBEYOND.EXE
 
 echo.
 echo -------------------------------------------------------------------------------
