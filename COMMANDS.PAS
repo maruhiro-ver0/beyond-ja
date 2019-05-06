@@ -156,8 +156,8 @@ procedure DescribeRm;
    begin SA;
 if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
      case Prm of
-0:s('船の前方');1:s('Ship Mid-Deck');2:s('Rear of Ship');
-3:s('Life Boat');4:s('Ocean Surface');5:s('Huge Cavern');
+0:s('船の前方');1:s('船の中央');2:s('船の後方');
+3:s('救命ボート');4:s('Ocean Surface');5:s('Huge Cavern');
 6:s('Cave of Pins');7:s('Ocean Bottom');8:s('Squeaky Cave');
 9:s('Stream Bend');10:s('Waterfall');13:s('Sloppy Cave');
 11:s('Hex Cave');12:s('Shallow Cleft');20:s('Zoo');
