@@ -339,7 +339,7 @@ procedure Check(var SepWord : Str16);
                   ' inside by under using near over onto top below '+
                   ' from away want across ')>0 then begin
              write('The word ''',Word);RL(393)end
-           else writeln('I don''t understand the word ''',Word,'.''');
+           else writeln('「',Word,'」という言葉はわからない。');
      'b'  :begin
             if pos(' ',Word)>0 then delete(Word,pos(' ',Word),9);
             writeln('You can''t use the word ''',Word,''' here.')

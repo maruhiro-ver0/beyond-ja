@@ -61,11 +61,11 @@ procedure DEAD;
      gotoxy(1,22);
      write('*********************************************************',
            '***********************');writeln;
-     TextColor(m0);gotoxy(32,20);writeln('YOU HAVE DIED!!!');
+     TextColor(m0);gotoxy(27,20);writeln('あなたは死んでしまった!!!');
      Textcolor(m2);Textbackground(0);
      for c:=700 downto 20 do for b:=70 downto 1 do sound(b*c);nosound;
      close(Rooms1);close(rooms2);close(special1);close(special2);close(line1);
-     gotoxy(1,23);DelLine;DelLine;writeln;write('Do you wish to play again? ');
+     gotoxy(1,23);DelLine;DelLine;writeln;write('やり直しますか? ');
      flag := readkey;
      if(upcase(flag)<>'N')then
       begin
@@ -157,8 +157,8 @@ procedure DescribeRm;
 if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
      case Prm of
 0:s('船の前方');1:s('船の中央');2:s('船の後方');
-3:s('救命ボート');4:s('Ocean Surface');5:s('Huge Cavern');
-6:s('Cave of Pins');7:s('Ocean Bottom');8:s('Squeaky Cave');
+3:s('救命ボート');4:s('海の上');5:s('広い洞窟');
+6:s('棘の洞窟');7:s('海の底');8:s('甲高い音の洞窟');
 9:s('Stream Bend');10:s('Waterfall');13:s('Sloppy Cave');
 11:s('Hex Cave');12:s('Shallow Cleft');20:s('Zoo');
 14:s('Winding Tunnel');15:s('Chasm');17:s('Chasm Bottom');
@@ -190,7 +190,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
       case Prm of
        2 :if(40 in p[2])then begin RR(2);RL(416)end;
        4 :if(en('B'))then RR(4)else begin RR(4);
-           writeln('There is a safety harness here.')end;
+           writeln('  安全ベルトが見える。')end;
        11:if(en('C'))then RS(15);
        40:if(en('g'))then RS(17);
        12:if not(en('G'))then begin RR(12);RL(146)end;
@@ -233,10 +233,9 @@ procedure SAVE;
    window(1,3,80,25);
    gotoxy(1,4);
    if(Drive='A:')then
-    writeln('Remove the GAME disk and insert your SAVE/RESTORE disk ',
-            'in drive A:')else
-    writeln('Make sure your SAVE/RESTORE disk is in drive B:');
-   writeln('  (Press any key to continue...)');flag:=readkey;
+    writeln('ドライブA:からゲームディスクを抜き、保存ディスクを挿入してください。')else
+    writeln('ドライブB:に保存ディスクが挿入されているか確認してください。');
+   writeln('  (何かキーを押すと続けます…)');flag:=readkey;
    writeln;writeln;
    write('Save under what name? ');readln(input);
    while pos(' ',input)>0 do delete(input,pos(' ',input),1);
@@ -300,19 +299,18 @@ procedure RESTORE;
    begin SA; for x:=1 to 24 do writeln; nosound;
    window(1,3,80,25);gotoxy(1,4);
    if(Drive='A:')then
-    writeln('Remove the GAME disk and insert your SAVE/RESTORE disk ',
-            'in drive ',Drive)else
-    writeln('Make sure your SAVE/RESTORE disk is in drive B:');
-   writeln('  (Press any key to continue...)');flag := readkey;
+    writeln('ドライブ',Drive,'からゲームディスクを抜き、保存ディスクを挿入してください。')else
+    writeln('ドライブB:に保存ディスクが挿入されているか確認してください。');
+   writeln('  (何かキーを押すと続けます…)');flag := readkey;
    writeln;writeln;
-   write('Which file name do you want to RESTORE? ');readln(input);
+   write('復帰するファイルのファイル名は? ');readln(input);
    while pos(' ',input)>0 do delete(input,pos(' ',input),1);
    while pos('.',input)>0 do delete(input,pos('.',input),1);
    if(input='')then input:='LastRoom';
    writeln;writeln;input:=Drive+input;
    while pos(':',input)>0 do input[pos(':',input)] := '_';
-   writeln('If your SAVE/RESTORE disk is now in drive ',Drive,
-           ' then press any key to start.');
+   writeln('ドライブ',Drive,'に保存ディスクが挿入されていれば',
+           '何かキーを押してください。');
    flag := readkey;
    if Exist then
     begin
@@ -346,23 +344,21 @@ procedure RESTORE;
      for x:= 0 to NMax do read(Things,r[x]);
      close(Things);
      writeln; delete(input,1,2);
-     writeln('Your previously SAVED game location is now',
-             ' RESTORED from the file ''',input,'.''');
+     writeln('ファイル',input,'を保存した位置に復帰しました。');
      if(Drive='A:')then begin writeln;
-      writeln('Remove the SAVE/RESTORE disk and insert your GAME disk.')end;
-     writeln('  (Press any key to continue...)');flag := readkey;
+      writeln('保存ディスクを抜いてゲームディスクを挿入してください。')end;
+     writeln('  (何かキーを押すと続けます…)');flag := readkey;
     end
    else
     begin writeln;TextColor(28);
-     writeln('             That name does not exist on this',
-             ' SAVE/RESTORE disk.',^g);
+     writeln('             その名前のファイルは保存ディスクに存在しません。',^g);
      TextColor(m2);writeln;
      if(Drive='A:')then
-      writeln('Put your GAME disk back in the disk drive and press any key.')
-     else writeln('  (Press any key to continue...)');
+      writeln('ゲームディスクに戻して何かキーを押してください。')
+     else writeln('  (何かキーを押すと続けます…)');
      flag := readkey;
     end;
-   writeln;writeln;writeln('You may now resume you game...');
+   writeln;writeln;writeln('ゲームに戻ります…');
    if(Line='')then Line:='look';Tic:=Tic-2;Back:=True;
    if(Prm in[59..68])then sound(20);
    window(1,2,80,25)
@@ -512,10 +508,10 @@ function Present : Boolean;
       if(noun2<>Null)then
        if(here(noun2))then Present:=true
        else begin
-         writeln('You can''t see any ',n[noun2,1],' here.');Present:=false end
+         writeln(n[noun2,1],'は見当たらない。');Present:=false end
       else Present:=true
      else begin
-       writeln('You can''t see any ',n[noun,1],' here.');Present:=false end
+       writeln(n[noun,1],'は見当たらない。');Present:=false end
     else Present:=true
    end;
 
@@ -544,8 +540,8 @@ procedure Initialize;
    if(upcase(flag)='O')or(flag='1')then
     begin Drive:='A:';writeln('1つです。')end else
     writeln('2つです。');
-   delay(999);clrscr;textcolor(15);gotoxy(1,5);writeln;textcolor(7);
-   cn('Beyond the Titanic');textcolor(6);cn('------------------');writeln;
+   delay(999);clrscr;textcolor(15);gotoxy(1,4);writeln;textcolor(7);
+   cn('Beyond the Titanic');cn('タイタニックを越えて');textcolor(6);cn('------------------');writeln;
    textcolor(7);
    cn('A Text & Sound Adventure Fantasy');writeln;writeln;
    cn('An Apogee Software Production');writeln;writeln;writeln;

@@ -159,7 +159,7 @@ CASE VERB OF
 18        :if inven=[] then RL(116)
              else
                begin
-                 writeln('You have in your possession...');
+                 writeln('‚ ‚È‚½‚ª‚Á‚Ä‚¢‚é‚Ì‚Íc');
                    for o:= 0 to NMax do
                     begin
                      if(o in inven)then
@@ -218,8 +218,8 @@ CASE VERB OF
             else writeln('You see nothing special about the ',n[noun,1],'.')
        end;
 
-41         :begin writeln('Time passes');y:=wherey;for o:=1 to 6 do
-              begin gotoxy(11+o,y-1);writeln('.');sound(o*99);delay(30)end;
+41         :begin writeln('‚ª‰ß‚¬‚Ä‚ä‚­');y:=wherey;for o:=1 to 6 do
+              begin gotoxy(14+o,y-1);writeln('.');sound(o*99);delay(30)end;
               if(Prm in[59..68])then sound(20)else nosound end;
 
 43..52     :if(Prm in[6..24])and(FlasOff)then RL(14)else
