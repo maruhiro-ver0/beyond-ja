@@ -69,7 +69,7 @@ procedure DEAD;
      flag := readkey;
      if(upcase(flag)<>'N')then
       begin
-       writeln('Restarting...');window(1,1,80,25);
+       writeln('もう一度…');window(1,1,80,25);
        halt(executeProcess(ParamStr(0), '', []));
       end
      else
@@ -275,13 +275,12 @@ procedure SAVE;
    for x:= 0 to NMax do write(Things,r[x]);
    close(Things);
    writeln; delete(input,1,2);
-   writeln('Your present game location is now',
-           ' SAVED to disk under the name ''',input,'.''');
+   writeln('ゲームの状態はファイル''',input,'''に保存されました。');
    if(Drive='A:')then begin writeln;
-    writeln('Remove the SAVE/RESTORE disk and insert your GAME disk.')end;
-   writeln('  (Press any key to continue...)');flag := readkey;
+    writeln('保存ディスクを抜き、ゲームディスクを挿入してください。')end;
+   writeln('  (何かキーを押すと続けます…)');flag := readkey;
    writeln;writeln;
-   if(Verb<>54)then writeln('You may now resume your game...');
+   if(Verb<>54)then writeln('ゲームに戻ります…');
    if(Line='')then Line:='look';Tic:=Tic-2;Back:=True;
    if(Prm in[59..68])then sound(20);
    window(1,2,80,25)
@@ -344,7 +343,7 @@ procedure RESTORE;
      for x:= 0 to NMax do read(Things,r[x]);
      close(Things);
      writeln; delete(input,1,2);
-     writeln('ファイル',input,'を保存した位置に復帰しました。');
+     writeln('ファイル',input,'に保存された状態に復帰しました。');
      if(Drive='A:')then begin writeln;
       writeln('保存ディスクを抜いてゲームディスクを挿入してください。')end;
      writeln('  (何かキーを押すと続けます…)');flag := readkey;
