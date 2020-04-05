@@ -160,7 +160,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 3:s('‹~–½ƒ{[ƒg');4:s('ŠC‚Ìã');5:s('L‚¢“´ŒA');
 6:s('™‚Ì“´ŒA');7:s('ŠC‚Ì’ê');8:s('b‚‚¢‰¹‚Ì“´ŒA');
 9:s('ì‚Ì‹È‚ª‚èŠp');10:s('‘ê');13:s('“D‚¾‚ç‚¯‚Ì“´ŒA');
-11:s('˜ZŠpŒ`‚Ì“´ŒA');12:s('Shallow Cleft');20:s('Zoo');
+11:s('˜ZŠpŒ`‚Ì“´ŒA');12:s('ó‚¢—ô‚¯–Ú');20:s('Zoo');
 14:s('Winding Tunnel');15:s('Chasm');17:s('Chasm Bottom');
 18:s('Tiny Opening');19:s('Etched Stairs');
 21:s('Edge of Saucer');22:s('Side of Saucer');
