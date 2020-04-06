@@ -215,9 +215,9 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
        if(o in Mov)then
          if(r[o]=Prm)then
           if not((Prm in[59..69])and(KeyHole)and(o=63))then
-           begin writeln('There is a ',n[o,1],' here.');
+           begin writeln('ここに',n[o,1],'がある。');
             if(here(ropecon))and(o=ropecon)and not(ropecon in inven)then
-             writeln('  The rope is attatched to the ',n[o,1],'.');
+             writeln('  ロープが',n[o,1],'に結び付けられている。');
             if(en('d'))and(o=70)and(here(70))then RL(147);
             if(o=SlotCon)and(here(o))then RL(388);
             if(o in CabiSet)and(here(o))then RL(389);
@@ -400,7 +400,7 @@ procedure DropAll;
        if(o in inven)then
          begin
            r[o]:=Prm;
-           inven:=inven-[o];writeln(n[o,1],': Dropped.');
+           inven:=inven-[o];writeln(n[o,1],': 置いた。');
          end;
      RL(106);
    end;  {of DropAll}

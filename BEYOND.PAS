@@ -164,9 +164,9 @@ CASE VERB OF
                     begin
                      if(o in inven)then
                       if(o=74)then
-                       writeln('an ',n[o,1])else writeln('a ',n[o,1]);
+                       writeln('',n[o,1])else writeln('',n[o,1]);
                      if(ropecon in inven)and(o=ropecon)then
-                      writeln('  The rope is tied to the ',n[o,1],'.');
+                      writeln('  ',n[o,1],'に結ばれたロープ');
                      if(o=74)and(en('p'))then RL(174);
                      if(o=89)and(en('i'))then RL(321);
                     end;
@@ -461,7 +461,7 @@ CASE VERB OF
                if(noun=74)and(en('p'))then RL(170)
           else if(noun=89)and(en('i'))then RL(335)
           else begin
-                 inven:=inven-[noun];writeln(n[noun,1],': Dropped.');
+                 inven:=inven-[noun];writeln(n[noun,1],': 置いた。');
                  R[noun]:=Prm;
                end
              else
@@ -742,9 +742,9 @@ CASE VERB OF
               if not(noun2 in[1,15,17,22,30,46,47,50,52,72,73,79,80,83])then
                if(ropecon=Null)then begin
                 ropecon:=noun2;
-                writeln('The rope is firmly tied to the ',n[noun2,1],'.');
+                writeln('ロープを',n[noun2,1],'にしっかりと結び付けた。');
                 if(noun2=57)then RL(48);end
-               else writeln('It is already tied to the ',n[ropecon,1],'.')
+               else writeln('ロープはもう',n[ropecon,1],'に結ばれている。')
               else RL(50)
              else Crazy
             else Crazy;
