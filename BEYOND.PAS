@@ -507,7 +507,7 @@ CASE VERB OF
            57:if(ropecon<>Null)and not(ropecon in inven)
                     and(r[ropecon]<>Prm)then
                   if(ropecon in mov)then begin
-                    RL(57);writeln('...it''s a ',n[ropecon,1],'!');
+                    RL(57);writeln('Åc',n[ropecon,1],'Çæ!');
                     r[ropecon]:=Prm;Ev:=Ev-['u'];
                     if(ropecon=29)and not(flasoff)then DescribeRm;end
                   else RL(56)
@@ -571,7 +571,7 @@ CASE VERB OF
              if(en('r'))and(inven<>[])then RL(87)
              else begin
                    Vanish(Noun);inven:=inven+[noun];
-                   writeln(n[noun,1],': Taken.');
+                   writeln(n[noun,1],': éÊÇ¡ÇΩÅB');
                    if(noun=70)then Ev:=Ev-['d'];
                   end
             else RL(234)

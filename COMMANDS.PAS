@@ -215,7 +215,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
        if(o in Mov)then
          if(r[o]=Prm)then
           if not((Prm in[59..69])and(KeyHole)and(o=63))then
-           begin writeln('ここに',n[o,1],'がある。');
+           begin writeln('',n[o,1],'がある。');
             if(here(ropecon))and(o=ropecon)and not(ropecon in inven)then
              writeln('  ロープが',n[o,1],'に結び付けられている。');
             if(en('d'))and(o=70)and(here(70))then RL(147);
