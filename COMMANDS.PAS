@@ -120,7 +120,7 @@ procedure Home;
 
 procedure Say(o : integer; p : Str16);
    begin
-     writeln('The ',n[o,1],' is already ',p,'.'); SA
+     writeln(n[o,1],'‚ÍŠù‚É',p,'B'); SA
    end;
 
 procedure Diagnose;
@@ -161,10 +161,10 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 6:s('™‚Ì“´ŒA');7:s('ŠC‚Ì’ê');8:s('b‚‚¢‰¹‚Ì“´ŒA');
 9:s('ì‚Ì‹È‚ª‚èŠp');10:s('‘ê');13:s('“D‚¾‚ç‚¯‚Ì“´ŒA');
 11:s('˜ZŠpŒ`‚Ì“´ŒA');12:s('ó‚¢’JŠÔ');20:s('Zoo');
-14:s('•—‚Ì‚­ƒgƒ“ƒlƒ‹');15:s('’JŠÔ');17:s('Chasm Bottom');
-18:s('Tiny Opening');19:s('Etched Stairs');
+14:s('•—‚Ì‚­ƒgƒ“ƒlƒ‹');15:s('’JŠÔ');17:s('’J’ê');
+18:s('‹·‚¢“ü‚èŒû');19:s('Etched Stairs');
 21:s('Edge of Saucer');22:s('Side of Saucer');
-23:s('Top of Saucer');24:s('Airlock');16:s('End of Rope');
+23:s('Top of Saucer');24:s('Airlock');16:s('ƒ[ƒv‚Ì’[');
 76:s('Locked Cabin');25:s('Central Entry');
 26:s('Lower Entry');27:s('Ship''s Systems');
 30:s('Time Chamber');28:s('Ship''s Lab');34:s('Bridge');

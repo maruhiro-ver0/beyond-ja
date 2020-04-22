@@ -478,13 +478,13 @@ CASE VERB OF
               begin
                 Ev:=Ev+['b'];
                 RL(3);end
-            else Say(noun,'peeled');
+            else Say(noun,'îçÇ©ÇÍÇƒÇ¢ÇÈ');
          7:RL(162);
         57:if(ropecon<>Null)then
               begin
                 ropecon:=Null;
                 RL(117);end
-            else Say(noun,'untied');
+            else Say(noun,'âÇ©ÇÍÇƒÇ¢ÇÈ');
         62:RL(238)
          else Crazy;
          end; {end of OPEN }
@@ -618,8 +618,8 @@ CASE VERB OF
                   Vanish(2);Sc:=Sc+10;end
                 else RL(46)
               else begin RL(47);Ev:=Ev+['n'];Sc:=Sc+15;Vanish(52);end
-            else writeln('I don''t think the ',n[noun,1],
-                         ' would do much for your digestive system!');
+            else writeln('Ç†Ç»ÇΩÇ™',n[noun,1],
+                         'Çè¡âªÇ≈Ç´ÇÈÇ∆ÇÕévÇ¶Ç»Ç¢!');
 
 42         :case noun of
             74:if not(en('p'))then
