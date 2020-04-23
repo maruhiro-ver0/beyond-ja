@@ -162,8 +162,8 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 9:s('ì‚Ì‹È‚ª‚èŠp');10:s('‘ê');13:s('“D‚¾‚ç‚¯‚Ì“´ŒA');
 11:s('˜ZŠpŒ`‚Ì“´ŒA');12:s('ó‚¢’JŠÔ');20:s('Zoo');
 14:s('•—‚Ì‚­ƒgƒ“ƒlƒ‹');15:s('’JŠÔ');17:s('’J’ê');
-18:s('‹·‚¢“ü‚èŒû');19:s('Etched Stairs');
-21:s('Edge of Saucer');22:s('Side of Saucer');
+18:s('‹·‚¢“ü‚èŒû');19:s('Šâ‚Ìâ“¹');
+21:s('‰~”Õ‚Ì’[');22:s('Side of Saucer');
 23:s('Top of Saucer');24:s('Airlock');16:s('ƒ[ƒv‚Ì’[');
 76:s('Locked Cabin');25:s('Central Entry');
 26:s('Lower Entry');27:s('Ship''s Systems');
