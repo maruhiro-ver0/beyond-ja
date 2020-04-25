@@ -203,8 +203,8 @@ CASE VERB OF
        87:RL(230);
        84:RL(231);
        34:begin RL(189);
-           if(Shots>0)then writeln('is about ',Shots*10,' percent full.')
-           else Writeln('is empty.')end;
+           if(Shots>0)then writeln('約',Shots*10,'パーセントだ。')
+           else Writeln('空だ。')end;
        15:if(84 in p[Prm])then RL(180)else If(71 in p[Prm])then RL(182)
           else RL(181);
     56,44:if(en('r'))then RL(51) else RL(52)
@@ -212,10 +212,10 @@ CASE VERB OF
              54,67,69,73,79,80,84,87,88])and(random(3)=1)then
             case random(3) of
              0  :RL(407);
-             1  :writeln('Yea, it''s definitely a ',n[noun,1],'!');
-             2  :writeln('It looks like any other ',n[noun,1],'.');
+             1  :writeln('そう、これは',n[noun,1],'だ!');
+             2  :writeln('普通の',n[noun,1],'のようだ。');
             end
-            else writeln('You see nothing special about the ',n[noun,1],'.')
+            else writeln(n[noun,1],'には特別なところはない。')
        end;
 
 41         :begin writeln('時が過ぎてゆく');y:=wherey;for o:=1 to 6 do
@@ -576,7 +576,7 @@ CASE VERB OF
                   end
             else RL(234)
             end
-           else writeln('You already have the ',n[noun,1],'.')
+           else writeln(n[noun,1],'は既に持っている。')
           else Crazy
          else if(en('r'))then RL(88) else
             begin flag:='0';Stuff:=0;
@@ -694,13 +694,13 @@ CASE VERB OF
           end;
        45:RL(315);
        60,56,44:begin RL(233);DEAD;end
-       else writeln('A blinding ray strikes the ',n[noun,1],', but it is',
-                      ' only slightly blackened.');
+       else writeln('まばゆい光線が',n[noun,1],'に命中したが、',
+                      '黒く焦げただけだった。');
       end {of shoot case}
           else if(noun=34)and(noun2=Null)then RL(213)
           else begin;Crazy;Shots:=Shots+1;end;
          end
-        else begin writeln('...click!');play(25,32,9);end
+        else begin writeln('…カチッ!');play(25,32,9);end
        else RL(208);
 
   end {of case}
@@ -1047,8 +1047,8 @@ if Present then
 Case Prm of
 
 25     :case verb of
-     43:begin writeln('The door slides open...');play(55,70,40);moveto(27);
-         writeln('The door slides shut behind you.');play(70,55,40);
+     43:begin writeln('扉がひとりでに開いた…');play(55,70,40);moveto(27);
+         writeln('後ろの扉が閉まった。');play(70,55,40);
          if not(en('Y'))then begin Ev:=Ev+['Y'];Sc:=Sc+30 end end;
      44:moveto(32); 45:moveto(30);
      46:moveto(34); 47:moveto(28); 49:moveto(31);
@@ -1062,8 +1062,8 @@ Case Prm of
         end;
 
 27      :case verb of
-   44,58:begin writeln('The door slides open...');play(55,70,40);moveto(25);
-          writeln('The door slides shut behind you.');delay(999);play(70,55,40)
+   44,58:begin writeln('扉がひとりでに開いた…');play(55,70,40);moveto(25);
+          writeln('後ろの扉が閉まった。');delay(999);play(70,55,40)
          end;
      17,27,28,38:if(noun=26)then
           begin RL(413);play(30,40,25);play(40,30,25)end;
@@ -1072,8 +1072,8 @@ Case Prm of
       else if(noun=58)then case compcon of
         Null:RL(155); 1:RS(21); 2:RS(22); 3:RS(23);
         4:begin RS(24);compcon:=Null;gotoxy(1,wherey-1);
-           writeln('. tim. chamb.r c.de: ',Code,'.. ..tel.port...  .  .',
-                   '... . .. ime .  p.n.l ....... ...');
+           writeln('時....屋..コ..ド: ',Code,'.. ..テレ..ート...  .  .',
+                   '... . .. 間 .  パネ.. ....... ...');
            RL(105);play(29,29,40);end;end;{of case}
    53  :begin
          if(input='1')or(input='one')then begin RL(104);compcon:=1;end;

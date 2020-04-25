@@ -79,7 +79,7 @@ procedure Format(var input : Str80);
     while(length(input)>0)and(input[1]=' ')do delete(input,1,1);
     while(length(input)>0)and(input[length(input)]=' ')do
      delete(input,length(input),1);
-    if(input='')or(input[1]='.')then writeln('Whoops!')
+    if(input='')or(input[1]='.')then writeln('‚¨‚Á‚Æ‚Æ!')
    end;  {of Format}
 
 
