@@ -171,11 +171,11 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 29:s('チューブの中');31:s('医務室');58,69:s('Inside Shuttle');
 32:s('倉庫');33:s('寝室');
 35:s('動力室');36:s('1号貨物室');37:s('2号貨物室');
-38:s('3号貨物室');39:s('4号貨物室');40:s('Large Cage');
-41:s('Wooden Bridge');42:s('Broken End');43:s('South End');
-44..46:s('Deserted Road');47:s('Crater Edge');48:s('Crater Floor');
-49:s('Building Front');50:s('Lobby');51..54:s('Office Room');
-55:s('Basement');56:s('Ladder Room');57:s('Building Roof');
+38:s('3号貨物室');39:s('4号貨物室');40:s('大きな貨物の中');
+41:s('木造の船橋');42:s('破壊された端');43:s('南の端');
+44..46:s('砂だらけの道路');47:s('クレーターの端');48:s('クレーターの中');
+49:s('ビルの前');50:s('ロビー');51..54:s('オフィス');
+55:s('地下');56:s('Ladder Room');57:s('Building Roof');
 59:case ShRm of 0:s('Above Mud Lake');
 1:s('Above Rubble');2:s('Above Desert');3:s('Above Pits');
 4:s('Above River');5:s('Above Stream');6:s('Above Town');

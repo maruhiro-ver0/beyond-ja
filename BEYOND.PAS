@@ -215,7 +215,7 @@ CASE VERB OF
              1  :writeln('そう、これは',n[noun,1],'だ!');
              2  :writeln('普通の',n[noun,1],'のようだ。');
             end
-            else writeln(n[noun,1],'には特別なところはない。')
+            else writeln(n[noun,1],'に変わったことはない。')
        end;
 
 41         :begin writeln('時が過ぎてゆく');y:=wherey;for o:=1 to 6 do
@@ -1167,8 +1167,8 @@ Case Prm of
          else
           begin Ev:=Ev+['h'];RL(173);play(23,24,250);Sc:=Sc+30;
             if(PanelCon<>Null)then begin r[PanelCon]:=30;Code:='R';
-             writeln('Sitting inside the panel compartment is a ',
-                      n[PanelCon,1],'.');end
+             writeln('パネルの奥に',
+                      n[PanelCon,1],'がある。');end
             else RL(183);
           end
         else RL(172);
@@ -1182,10 +1182,10 @@ Case Prm of
         end;
  11,24:case noun of
    49:begin SA;if(en('h'))then if(PanelCon=Null)then RL(183)
-                 else writeln('Inside the compartment is a ',n[PanelCon,1],'.')
+                 else writeln('パネルの奥に',n[PanelCon,1],'がある。')
                else RL(184);end;
-   82:begin SA;writeln('The year dial is set to ',YearDial,'.');end;
-   24:begin SA;writeln('The day dial is set to ',DayDial,'.');end;
+   82:begin SA;writeln('年ダイヤルは',YearDial,'にセットされている。');end;
+   24:begin SA;writeln('日ダイヤルは',DayDial,'にセットされている。');end;
    16:begin RL(203);RL(204)end;
    25:RL(115);
    38:RL(161);
