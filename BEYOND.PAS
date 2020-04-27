@@ -626,12 +626,12 @@ CASE VERB OF
                 if not(en('i'))then
                  begin RL(20);inven:=inven+[74];r[74]:=Null;Ev:=Ev+['p'];end
                 else RL(320)
-               else Say(74,'on');
+               else Say(74,'’…‚Ä‚¢‚é');
             89:if not(en('i'))then
                 if not(en('p'))then
                  begin RL(319);vanish(89);inven:=inven+[89];Ev:=Ev+['i'];end
                 else RL(318)
-               else Say(89,'on your head')
+               else Say(89,'”í‚Á‚Ä‚¢‚é')
             else RL(128);
             end;
 
