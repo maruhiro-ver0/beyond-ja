@@ -176,13 +176,13 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 44..46:s('砂だらけの道路');47:s('クレーターの端');48:s('クレーターの中');
 49:s('ビルの前');50:s('ロビー');51..54:s('オフィス');
 55:s('地下室');56:s('はしごの部屋');57:s('ビルの屋上');
-59:case ShRm of 0:s('Above Mud Lake');
-1:s('Above Rubble');2:s('Above Desert');3:s('Above Pits');
-4:s('Above River');5:s('Above Stream');6:s('Above Town');
-7:s('Above Mountain');8:s('Above Crator');9:s('Above Hills');
-10:s('Above Canyon');11:s('Above Flatland');12:s('Above Dry Lake');
-13:s('Above Desert');14:s('Above Bridge')end;{of Above Rooms}
-63,64:s('Above Clouds');65..68:s('Outside City');70:s('Landing Bay');
+59:case ShRm of 0:s('沼の上空');
+1:s('瓦礫の上空');2:s('砂漠の上空');3:s('クレーターの上空');
+4:s('川の上空');5:s('小川の上空');6:s('町の上空');
+7:s('山の上空');8:s('クレーターの上空');9:s('丘の上空');
+10:s('谷の上空');11:s('平地の上空');12:s('干上がった池の上空');
+13:s('砂漠の上空');14:s('橋の上空')end;{of Above Rooms}
+63,64:s('雲の上');65..68:s('Outside City');70:s('Landing Bay');
 71:s('Power Plant');72..74:s('Dark Corridor');75:s('Food Supply')
      end; {of case}
 
@@ -205,7 +205,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
                 begin RmSh:=RmSh+[ShRm];RS(ShRm+46)end
                else if(Prm<>59)then RR(Prm);
                if KeyHole and here(63)then
-                writeln('The shiny key is in the keyhole.')
+                writeln('輝く鍵は鍵穴にささっている。')
               end
        else RR(Prm)
       end; {of case}

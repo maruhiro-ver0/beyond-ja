@@ -1759,7 +1759,7 @@ Case Prm of
         end;
 
 59     :case verb of
-   43..50:begin o:=random(8)+3;writeln('You travel about ',o,' miles...');
+   43..50:begin o:=random(8)+3;writeln(o,'マイルほど飛行した…');
            if(random(4)=2)then ShRm:=13 else ShRm:=Random(15);moveto(59)end;
    52,57:RL(341);
     58  :if(noun=Null)or(noun=65)then begin RL(342);DEAD;end;
