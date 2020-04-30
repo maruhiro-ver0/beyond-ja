@@ -182,7 +182,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 7:s('R‚Ìã‹ó');8:s('ƒNƒŒ[ƒ^[‚Ìã‹ó');9:s('‹u‚Ìã‹ó');
 10:s('’J‚Ìã‹ó');11:s('•½’n‚Ìã‹ó');12:s('Š±ã‚ª‚Á‚½’r‚Ìã‹ó');
 13:s('»”™‚Ìã‹ó');14:s('‹´‚Ìã‹ó')end;{of Above Rooms}
-63,64:s('‰_‚Ìã');65..68:s('Outside City');70:s('Landing Bay');
+63,64:s('‰_‚Ìã');65..68:s('“ss‚ÌŠO');70:s('`');
 71:s('Power Plant');72..74:s('Dark Corridor');75:s('Food Supply')
      end; {of case}
 
