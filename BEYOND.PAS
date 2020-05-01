@@ -465,7 +465,7 @@ CASE VERB OF
                  R[noun]:=Prm;
                end
              else
-               writeln('You don''t have the ',n[noun,1],'.')
+               writeln(n[noun,1],'‚ğ‚Á‚Ä‚¢‚È‚¢B')
            else
              begin
               if(74 in inven)and(en('p'))then RL(170)else

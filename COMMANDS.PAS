@@ -183,7 +183,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 10:s('’J‚Ìã‹ó');11:s('•½’n‚Ìã‹ó');12:s('Š±ã‚ª‚Á‚½’r‚Ìã‹ó');
 13:s('»”™‚Ìã‹ó');14:s('‹´‚Ìã‹ó')end;{of Above Rooms}
 63,64:s('‰_‚Ìã');65..68:s('“ss‚ÌŠO');70:s('`');
-71:s('Power Plant');72..74:s('Dark Corridor');75:s('Food Supply')
+71:s('”­“dİ”õ');72..74:s('”–ˆÃ‚¢’Ê˜H');75:s('H—¿ŒÉ')
      end; {of case}
 
     if Verbose then begin FlagSA:='r';
