@@ -177,7 +177,7 @@ CASE VERB OF
        2:if(en('b'))then RL(198) else RL(199);
        29:begin RL(89);if(en('a'))then RL(200) else RL(201);end;
        57:if(ropecon<>Null)then
-            writeln('The rope is tied to the ',n[ropecon,1],'.')
+            writeln('ロープは',n[ropecon,1],'に結ばれている。')
           else RL(133);
        65:if(Prm in[59..68])then RS(84)else Line:='l';
        8:RL(202);
@@ -246,7 +246,7 @@ CASE VERB OF
         68:if(Prm=34)then
             if(SlotCon=Null)then begin RL(186);Vanish(noun);
              SlotCon:=Noun;r[noun]:=Prm;end
-            else Say(68,'being used')
+            else Say(68,'使用中')
            else
             if(noun=63)and(Prm=58)then
              begin RL(337);KeyHole:=True;r[63]:=Prm;inven:=inven-[63];end
@@ -264,7 +264,7 @@ CASE VERB OF
         30:if(noun=70)then
             if not(en('d'))then
              begin Ev:=Ev+['d'];RL(69);Vanish(70);r[70]:=Prm;end
-            else Say(70,'in the dirt')
+            else Say(70,'泥の中')
            else Crazy
           end;{of case}
 
@@ -290,7 +290,7 @@ CASE VERB OF
             if(FlagSA<>'s')then Crazy;
            end
           end
-         else writeln('First you must have the ',n[noun,1],'.')
+         else writeln('まず',n[noun,1],'を持っていなければならない。')
         else Crazy;
 
   end {of case}
@@ -383,8 +383,8 @@ CASE VERB OF
                 case noun of
                  57:RL(259);
                  60:RL(260)
-                 else writeln('At the last moment you decide to spare',
-                       ' the ',n[noun,1],'''s life!')
+                 else writeln('あと少しのところで、',
+                       n[noun,1],'の命を奪うのを止めた!')
                 end
                else Crazy
               else RL(83);
@@ -392,9 +392,9 @@ CASE VERB OF
 30         :if(noun in [39,43,12,26,6,22,47,49,68,78,17,11,
                50,65,73,74,80,79,30])then RL(93) else RL(94);
 
-54         :begin write('Would you like to SAVE your game first (Y or N)?  ');
-             flag := readkey;if(upcase(flag)<>'N')then SAVE else writeln('No.');
-             write('Are you still sure you want to quit? ');
+54         :begin write('終了する前にゲームを保存しますか? (Y または N) ');
+             flag := readkey;if(upcase(flag)<>'N')then SAVE else writeln('いいえ。');
+             write('本当にゲームを終了しますか? ');
              flag := readkey;if(upcase(flag)='Y')then
               begin RL(367);delay(999);window(1,1,80,25);clrscr;close(rooms1);
                close(rooms2);close(special1);close(special2);close(line1);
@@ -536,17 +536,16 @@ CASE VERB OF
              else RL(122);
            end; {of case}
 
-62         :begin write('You have ',Sc,' of 1000 points',
-                        ', giving you the rank of ');Tic:=Tic-1;
+62         :begin write('あなたは1000点中',Sc,'点を獲得し、');Tic:=Tic-1;
               case Sc of
-              0..99:writeln('beginner.');
-              100..249:writeln('novice adventurer.');
-              250..399:writeln('adventurer third class.');
-              400..549:writeln('adventurer second class.');
-              550..699:writeln('adventurer first class.');
-              700..849:writeln('expert adventurer.');
-              850..999:writeln('master adventurer.')
-              else writeln('dead adventurer!')
+              0..99:writeln('入門者のランクに達した。');
+              100..249:writeln('冒険初心者のランクに達した。');
+              250..399:writeln('3級冒険者のランクに達した。');
+              400..549:writeln('2級冒険者のランクに達した。');
+              550..699:writeln('1級冒険者のランクに達した。');
+              700..849:writeln('熟練冒険者のランクに達した。');
+              850..999:writeln('最高冒険者のランクに達した!')
+              else writeln('死せる冒険者のランクに達した!')
               end;
             Attack:=False;
             if(MnRm=Prm)then RL(370)
@@ -588,12 +587,12 @@ CASE VERB OF
                  if(Stuff+1 < 7)then
                   begin
                    vanish(o);inven:=inven+[o];Stuff:=Stuff+1;
-                   writeln(n[o,1],':  Taken.');flag:='1';
+                   writeln(n[o,1],': 取った。');flag:='1';
                    if(o=70)then Ev:=Ev-['d'];
                   end
                  else
                   begin flag:='1';
-                  writeln(n[o,1],': You have too many objects already!');end
+                  writeln(n[o,1],': もう持てない!');end
                end
              else RL(234);
              if(flag='0')then RL(49)
@@ -643,11 +642,11 @@ CASE VERB OF
              52:begin RL(34);Vanish(52);end;
              23:if(noun2=null)then RL(369)
                 else begin Vanish(noun2);Attack:=False;
-                 writeln('The monster grabs the ',n[noun2,1],' and eats it!');
+                 writeln('怪物は',n[noun2,1],'を掴み食べた!');
                      end;
              7:begin RL(35);Vanish(7);r[52]:=Prm;Ev:=Ev+['I'];end
-             else if(verb=0)then writeln('At the last moment you decide to',
-                 ' spare the ',n[noun,1],'''s life!')
+             else if(verb=0)then writeln('あと少しのところで',
+                 n[noun,1],'の命を奪うのを止めた!')
                   else RL(216);
              end{of case}
              else Crazy;
@@ -683,7 +682,7 @@ CASE VERB OF
       case noun of
        1:begin;Crazy;Shots:=Shots+1;end;
        2,7,8,13,27,29,32,40,51,52,63,74,77,89:begin vanish(noun);
-          writeln('The ',n[noun,1],' vanishes in an explosion of light!');
+          writeln(n[noun,1],'は爆発し、閃光の中に消えた!');
             if(noun=74)and(en('p'))then begin RL(232);DEAD;end;
          end;
        48:begin RL(222);RL(223);Ev:=Ev+['g'];p[40]:=p[40]-[48];
@@ -728,13 +727,13 @@ CASE VERB OF
                 if(Prm in[0..6,9,10,13,41..43])and(noun2 in[73,53,47])then
                   begin RL(306);vanish(noun);end;
                 if(noun2=23)then begin Attack:=False;Vanish(noun);RL(379);
-                  writeln(n[noun,1],' out of mid-flight and eats it',
-                        ' in one giant gulp!')end;
+                  writeln(n[noun,1],'をキャッチして食べ、',
+                        '大きなゲップをした!')end;
                end
-              else begin writeln('The ',n[noun,1],' collides with the ',
-                n[noun2,1],' but nothing interesting happens.');
+              else begin writeln(n[noun,1],'と',
+                n[noun2,1],'をぶつけたが何も起こらなかった。');
                 Vanish(noun);r[noun]:=Prm;end
-             else writeln('First you must have the ',n[noun,1],'.')
+             else writeln(n[noun,1],'を持っていなければならない!')
             else Crazy;
 
 37         :if(noun=57)then
@@ -786,18 +785,18 @@ CASE Prm OF
              if not(en('o'))then
                begin Ev:=Ev+['o'];RL(328); for o:=2 to 57 do
                  if(o in kitset)then r[o]:=Prm;end
-             else Say(noun,'opened');
+             else Say(noun,'開いている');
    3  :if(noun=39)then
              if(en('o'))then
                begin Ev:=Ev-['o'];RL(186); for o:=2 to 57 do
                  if(o in kitset)then r[o]:=Null;end
-             else Say(noun,'shut');
+             else Say(noun,'閉じている');
   17,28,27 :if(noun in [6,57,39,59])then RL(29);
   24,11   :case noun of
        39  :if(en('o'))then
                if kitset=[] then begin RL(329);end
                else begin RL(330);for o:= 0 to 57 do
-                   if(o in kitset)then writeln(' a ',n[o,1]);end
+                   if(o in kitset)then writeln('  ',n[o,1]);end
              else RL(331);
        57 :RL(10);
        73 :RL(19);
@@ -813,7 +812,7 @@ CASE Prm OF
              if(en('o'))then
                begin Ev:=Ev-['o'];RL(186); for o:=0 to 57 do
                  if(o in kitset)then r[o]:=Null;end
-             else Say(noun,'shut');
+             else Say(noun,'閉じている');
   29,37 :if(noun=35)and(noun2=60)then begin
              RL(8);Ev:=Ev+['B'];end;
    26   :if(noun=35)and(en('B'))then begin RL(332);Ev:=Ev-['B'];end
@@ -821,7 +820,7 @@ CASE Prm OF
              if not(en('o'))then
                begin Ev:=Ev+['o'];RL(328); for o:=0 to 57 do
                  if(o in kitset)then r[o]:=Prm;end
-             else Say(noun,'opened');
+             else Say(noun,'開いている');
    19,2:if(noun in[6,64])or(noun=Null)then
              if(en('B'))then RL(9)
              else begin RL(0);DEAD;end;
@@ -829,7 +828,7 @@ CASE Prm OF
        39  :if(en('o'))then
                if kitset=[] then begin RL(329);end
                else begin RL(330);for o:= 0 to 57 do
-                   if(o in kitset)then writeln(' a ',n[o,1]);end
+                   if(o in kitset)then writeln('  ',n[o,1]);end
              else RL(331);
        35 :RL(12);
        73 :RL(19);
@@ -886,7 +885,7 @@ Case Prm of
   43..47,49..52:if FlasOff then RL(14);
   11:if(noun in [46,79])then RS(12)
          else if(noun in [15,30])then RL(28);
-   38 :if(noun=46)then begin SA;writeln('It feels jagged.');end;
+   38 :if(noun=46)then begin SA;writeln('ギザギザだ。');end;
          end; {of 8}
 
 9         :case verb of
@@ -927,7 +926,7 @@ Case Prm of
   7    :RL(65);
   14    :if(noun in[57,70])then begin inven:=inven+[noun];r[noun]:=Null;
            if(noun=70)then Ev:=Ev-['d']
-           else Ev:=Ev-['t'];SA;writeln(n[noun,1],':  Taken.');end;
+           else Ev:=Ev-['t'];SA;writeln(n[noun,1],': 取った。');end;
   45,49  :if(flasoff)then RL(14) else moveto(14);
    44    :RL(73);
   24,11:if(noun=17)and not(en('u'))then RL(74)
@@ -1010,11 +1009,11 @@ Case Prm of
    43,48 :if(flasoff)then RL(14)else moveto(22);
    44,45,47,49:RL(258);
    26,27 :if(noun=26)then
-           if(en('l'))then Say(26,'open')
+           if(en('l'))then Say(26,'開いている')
            else begin RL(98);Ev:=Ev+['l'];p[23]:=p[23]+[69];end;
     3    :if(noun=26)then
            if(en('l'))then begin RL(171);Ev:=Ev-['l'];p[23]:=p[23]-[69];end
-           else Say(26,'closed');
+           else Say(26,'閉じている');
   2,52,57:if(en('l'))and((noun=69)or(noun=Null))then moveto(24)else RL(99);
   24,25  :if(noun=26)then RL(151);
    11    :if(noun=26)then if(en('l'))then RL(217)else RL(218)
@@ -1131,7 +1130,7 @@ Case Prm of
 
 30   :case verb of
    46,58:if(en('e'))then RL(212) else moveto(25);
-   26,27,28,40:if(noun=49)then if(en('h'))then Say(49,'open') else RL(159)
+   26,27,28,40:if(noun=49)then if(en('h'))then Say(49,'開いている') else RL(159)
                else
                 if(noun in[10,76])and(verb=28)then
                  begin
@@ -1163,7 +1162,7 @@ Case Prm of
    35   :if(en('e'))then begin Ev:=Ev-['e'];RL(211);Attack:=False end;
    17,0,6:if(noun=49)then RL(160);
    53  :if(input=Code)then
-         If(en('h'))then Say(49,'open')
+         If(en('h'))then Say(49,'開いている')
          else
           begin Ev:=Ev+['h'];RL(173);play(23,24,250);Sc:=Sc+30;
             if(PanelCon<>Null)then begin r[PanelCon]:=30;Code:='R';
@@ -1259,7 +1258,7 @@ Case Prm of
 39     :case verb of
   46,50,58:moveto(26);
     45  :if(en('g'))then moveto(40);
-    3   :if(noun=26)then if(en('g'))then RL(225) else Say(26,'shut');
+    3   :if(noun=26)then if(en('g'))then RL(225) else Say(26,'閉じている');
     43  :moveto(36);
     44  :moveto(38);
     57  :if(noun=12)then RL(215);
@@ -1267,8 +1266,8 @@ Case Prm of
 
 40     :case verb of
   46,58 :if(en('g'))then moveto(39) else RL(221);
-   26   :if(noun=26)then if(en('g'))then Say(26,'open') else RL(221);
-   3    :if(noun=26)then if(en('g'))then RL(225) else Say(26,'shut');
+   26   :if(noun=26)then if(en('g'))then Say(26,'開いている') else RL(221);
+   3    :if(noun=26)then if(en('g'))then RL(225) else Say(26,'閉じている');
   11,14 :if(noun in[12,43,83])then RL(261);
        end;
 
@@ -1412,7 +1411,7 @@ Case Prm of
              if(o in cabiset)then r[o]:=55;
              if not(en('R'))then begin Ev:=Ev+['R'];Sc:=Sc+55;end;
             end
-           else Say(11,'open')
+           else Say(11,'開いている')
           else if(SepWord='s')then RL(317);
    29   :if(noun=27)and(noun2 in[45,26,11,68])and(SepWord='in')then
           if not(en('k'))then
@@ -1426,12 +1425,12 @@ Case Prm of
            begin RL(314);play(30,32,30);Ev:=Ev-['k'];
             for o:= 2 to NMax do if(o in cabiset)then r[o]:=Null;
            end
-          else Say(11,'shut & locked');
+          else Say(11,'鍵が掛かっている');
   24,30 :if(noun in[26,11])then
           if(en('k'))then
            begin RL(324);
             if(cabiset=[])then RL(339)else
-             for o:=0 to NMax do if(o in Cabiset)then writeln('a ',n[o,1])
+             for o:=0 to NMax do if(o in Cabiset)then writeln('',n[o,1])
            end
           else RL(299);
        end; {of 55}
@@ -1711,7 +1710,7 @@ Case Prm of
           25:RL(418);
           21:begin;RL(140);RL(141);end;
           68:if(SlotCon=Null)then RL(143) else
-              begin SA;writeln('The slot contains a ',n[SlotCon,1],'.')end;
+              begin SA;writeln('スロットの中には',n[SlotCon,1],'がある。')end;
           58:if(SlotCon=77)and not(en('x'))then
               begin Ev:=Ev+['x'];Sc:=Sc+5;RS(75)end
              else if(SlotCon=77)then RS(77)else RL(385)

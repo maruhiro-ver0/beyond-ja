@@ -100,22 +100,22 @@ procedure Home;
      gotoxy(1,22);
      write('#########################################################',
            '#######################');writeln;
-     TextColor(31);gotoxy(25,20);writeln('Y O U   H A V E   W O N ! ! !');
+     TextColor(31);gotoxy(25,20);writeln('あ な た は 勝 利 し た ! ! !');
      Textcolor(m2);Textbackground(0);
      gotoxy(1,23);DelLine;DelLine;writeln;
      for x:=150 downto 1 do begin sound(x*55);delay(8);nosound;delay(20)end;
      if(Sc>1000)then Sc:=1000;
-     write('You finished with a score of ',Sc,', which makes you a ');
+     write('あなたはこのゲームで',Sc,'点を獲得し、');
      if(Sc=1000)then
-      begin writeln('Perfect Adventurer!!!');
+      begin writeln('完璧な冒険者となった!!!');
         for y:=1 to 7 do
          for o:=0 to 20 do
            for x:= 99+(o*430)to 998+(o*430)do begin sound(25);sound(x)end
       end
-     else writeln('Master Adventurer!');
+     else writeln('達人冒険者となった!');
      for c:=1 to 999 do for b:=1 to 61 do sound(b*c);nosound;
      writeln;nosound;
-     writeln('Reboot your computer to regain control...')
+     writeln('コンピュータを再起動してください…')
   end;
 
 procedure Say(o : integer; p : Str16);
@@ -165,14 +165,14 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 18:s('狭い入り口');19:s('岩の坂道');
 21:s('円盤の端');22:s('円盤の側');
 23:s('円盤の上');24:s('エアロック');16:s('ロープの端');
-76:s('Locked Cabin');25:s('中央エントランス');
+76:s('閉じたキャビン');25:s('中央エントランス');
 26:s('下層エントランス');27:s('船の頭脳');
 30:s('時の部屋');28:s('研究室');34:s('船橋');
 29:s('チューブの中');31:s('医務室');58,69:s('シャトルの中');
 32:s('倉庫');33:s('寝室');
 35:s('動力室');36:s('1号貨物室');37:s('2号貨物室');
 38:s('3号貨物室');39:s('4号貨物室');40:s('大きな貨物の中');
-41:s('木造の船橋');42:s('破壊された端');43:s('南の端');
+41:s('木の橋');42:s('破壊された端');43:s('南の端');
 44..46:s('砂だらけの道路');47:s('クレーターの端');48:s('クレーターの中');
 49:s('ビルの前');50:s('ロビー');51..54:s('オフィス');
 55:s('地下室');56:s('はしごの部屋');57:s('ビルの屋上');
@@ -237,14 +237,14 @@ procedure SAVE;
     writeln('ドライブB:に保存ディスクが挿入されているか確認してください。');
    writeln('  (何かキーを押すと続けます…)');flag:=readkey;
    writeln;writeln;
-   write('Save under what name? ');readln(input);
+   write('保存するファイルのファイル名は? ');readln(input);
    while pos(' ',input)>0 do delete(input,pos(' ',input),1);
    while pos('.',input)>0 do delete(input,pos('.',input),1);
    if(input='')then input:='LastRoom';
    writeln;writeln;input:=Drive+input;
    while pos(':',input)>0 do input[pos(':',input)] := '_';
-   writeln('If your SAVE/RESTORE disk is in drive ',Drive,
-            ' then press any key to start.');
+   writeln('保存/復帰するディスクをドライブ',Drive,
+            'に挿入されていれば、何かキーを押すと始まります。');
    flag := readkey;
    with DiskSave do
     begin

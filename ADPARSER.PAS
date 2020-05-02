@@ -342,7 +342,7 @@ procedure Check(var SepWord : Str16);
            else writeln('「',Word,'」という言葉はわからない。');
      'b'  :begin
             if pos(' ',Word)>0 then delete(Word,pos(' ',Word),9);
-            writeln('You can''t use the word ''',Word,''' here.')
+            writeln('「',Word,'」という言葉はここでは使えない。')
            end;
      's'  :RL(129);
      'r'  :RL(130);
