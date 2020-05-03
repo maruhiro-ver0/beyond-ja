@@ -267,7 +267,7 @@ procedure SAVE;
     for y:= 1 to 5 do
      write(WordList,n[x,y]);
    for x:= 0 to VMax do
-    for y:= 1 to 10 do
+    for y:= 1 to 5 do
      write(WordList,v[x,y]);
    close(WordList);
    assign(Things,input+'.d');
@@ -335,7 +335,7 @@ procedure RESTORE;
       for y:= 1 to 5 do
        read(WordList,n[x,y]);
      for x:= 0 to VMax do
-      for y:= 1 to 10 do
+      for y:= 1 to 5 do
        read(WordList,v[x,y]);
      close(WordList);
      assign(Things,input+'.d');

@@ -77,8 +77,8 @@ var
      Input,
      Again,
      Line           : Str80;
-     V{erb}         : array [0..VMax,1..10] of Str16;
-     N{oun}         : array [0..NMax,1..10] of Str16;
+     V{erb}         : array [0..VMax,1..5] of Str16;
+     N{oun}         : array [0..NMax,1..5] of Str16;
      R{oom}         : array [0..NMax] of integer;
      P{lace}        : array [0..RMax] of PlayersObjects;
      RmSh           : set of 0..14;

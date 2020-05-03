@@ -148,7 +148,7 @@ procedure FindVerb (var input:Str80;var Word:Str16;var Verb:integer);
          k:=k+1;
          if v[r,k]=Word then
            Verb:=r;
-       until (v[r,k]=Q)or(k=10)
+       until (v[r,k]=Q)or(k=5)
      end;
 
    if(pos(' ',Word)<>0)and(Verb=Null)then
@@ -161,7 +161,7 @@ procedure FindVerb (var input:Str80;var Word:Str16;var Verb:integer);
              k:=k+1;
              if v[r,k]=Word then
                Verb:=r;
-           until (v[r,k]=Q)or(k=10)
+           until (v[r,k]=Q)or(k=5)
          end
      end;
      delete(input,length(input),1);
@@ -196,7 +196,7 @@ procedure FindNoun(var input:Str80;var Word:Str16;var Noun:integer);
          k:=k+1;
          if n[t,k]=Word then
            Noun:=t;
-       until (n[t,k]=Q)or(k=10)
+       until (n[t,k]=Q)or(k=5)
      end;
 
    if(pos(' ',Word)<>0)and(Noun=Null)then
@@ -209,7 +209,7 @@ procedure FindNoun(var input:Str80;var Word:Str16;var Noun:integer);
              k:=k+1;
              if n[t,k]=Word then
                Noun:=t;
-           until (n[t,k]=Q)or(k=10)
+           until (n[t,k]=Q)or(k=5)
          end
      end;
      delete(input,length(input),1);
