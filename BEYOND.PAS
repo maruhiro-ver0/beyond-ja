@@ -78,7 +78,10 @@ var
      Again,
      Line           : Str80;
      V{erb}         : array [0..VMax,1..5] of Str16;
+     D{oushi}       : array [0..VMax,1..5] of Str16;
      N{oun}         : array [0..NMax,1..5] of Str16;
+     M{eishi}       : array [0..NMAX,1..5] of Str16;
+     Prep{osition}  : array [0..VMax] of Str16;
      R{oom}         : array [0..NMax] of integer;
      P{lace}        : array [0..RMax] of PlayersObjects;
      RmSh           : set of 0..14;
@@ -141,6 +144,9 @@ var
 {$I Objects.PAS }{   <----- CALLS UP THE VERBS & NOUNS <*******************}
 
 
+{$I Trans.PAS }
+
+
 {===================}
 procedure DefaultAnswers1;
 begin
@@ -164,9 +170,9 @@ CASE VERB OF
                     begin
                      if(o in inven)then
                       if(o=74)then
-                       writeln('',n[o,1])else writeln('',n[o,1]);
+                       writeln('',m[o,1])else writeln('',m[o,1]);
                      if(ropecon in inven)and(o=ropecon)then
-                      writeln('  ',n[o,1],'に結ばれたロープ');
+                      writeln('  ',m[o,1],'に結ばれたロープ');
                      if(o=74)and(en('p'))then RL(174);
                      if(o=89)and(en('i'))then RL(321);
                     end;
@@ -177,7 +183,7 @@ CASE VERB OF
        2:if(en('b'))then RL(198) else RL(199);
        29:begin RL(89);if(en('a'))then RL(200) else RL(201);end;
        57:if(ropecon<>Null)then
-            writeln('ロープは',n[ropecon,1],'に結ばれている。')
+            writeln('ロープは',m[ropecon,1],'に結ばれている。')
           else RL(133);
        65:if(Prm in[59..68])then RS(84)else Line:='l';
        8:RL(202);
@@ -212,10 +218,10 @@ CASE VERB OF
              54,67,69,73,79,80,84,87,88])and(random(3)=1)then
             case random(3) of
              0  :RL(407);
-             1  :writeln('そう、これは',n[noun,1],'だ!');
-             2  :writeln('普通の',n[noun,1],'のようだ。');
+             1  :writeln('そう、これは',m[noun,1],'だ!');
+             2  :writeln('普通の',m[noun,1],'のようだ。');
             end
-            else writeln(n[noun,1],'に変わったことはない。')
+            else writeln(m[noun,1],'に変わったことはない。')
        end;
 
 41         :begin writeln('時が過ぎてゆく');y:=wherey;for o:=1 to 6 do
@@ -290,7 +296,7 @@ CASE VERB OF
             if(FlagSA<>'s')then Crazy;
            end
           end
-         else writeln('まず',n[noun,1],'を持っていなければならない。')
+         else writeln('まず',m[noun,1],'を持っていなければならない。')
         else Crazy;
 
   end {of case}
@@ -384,7 +390,7 @@ CASE VERB OF
                  57:RL(259);
                  60:RL(260)
                  else writeln('あと少しのところで、',
-                       n[noun,1],'の命を奪うのを止めた!')
+                       m[noun,1],'の命を奪うのを止めた!');
                 end
                else Crazy
               else RL(83);
@@ -461,11 +467,11 @@ CASE VERB OF
                if(noun=74)and(en('p'))then RL(170)
           else if(noun=89)and(en('i'))then RL(335)
           else begin
-                 inven:=inven-[noun];writeln(n[noun,1],': 置いた。');
+                 inven:=inven-[noun];writeln(m[noun,1],': 置いた。');
                  R[noun]:=Prm;
                end
              else
-               writeln(n[noun,1],'を持っていない。')
+               writeln(m[noun,1],'を持っていない。')
            else
              begin
               if(74 in inven)and(en('p'))then RL(170)else
@@ -507,7 +513,7 @@ CASE VERB OF
            57:if(ropecon<>Null)and not(ropecon in inven)
                     and(r[ropecon]<>Prm)then
                   if(ropecon in mov)then begin
-                    RL(57);writeln('…',n[ropecon,1],'だ!');
+                    RL(57);writeln('…',m[ropecon,1],'だ!');
                     r[ropecon]:=Prm;Ev:=Ev-['u'];
                     if(ropecon=29)and not(flasoff)then DescribeRm;end
                   else RL(56)
@@ -570,12 +576,12 @@ CASE VERB OF
              if(en('r'))and(inven<>[])then RL(87)
              else begin
                    Vanish(Noun);inven:=inven+[noun];
-                   writeln(n[noun,1],': 取った。');
+                   writeln(m[noun,1],': 取った。');
                    if(noun=70)then Ev:=Ev-['d'];
                   end
             else RL(234)
             end
-           else writeln(n[noun,1],'は既に持っている。')
+           else writeln(m[noun,1],'は既に持っている。')
           else Crazy
          else if(en('r'))then RL(88) else
             begin flag:='0';Stuff:=0;
@@ -587,12 +593,12 @@ CASE VERB OF
                  if(Stuff+1 < 7)then
                   begin
                    vanish(o);inven:=inven+[o];Stuff:=Stuff+1;
-                   writeln(n[o,1],': 取った。');flag:='1';
+                   writeln(m[o,1],': 取った。');flag:='1';
                    if(o=70)then Ev:=Ev-['d'];
                   end
                  else
                   begin flag:='1';
-                  writeln(n[o,1],': もう持てない!');end
+                  writeln(m[o,1],': もう持てない!');end
                end
              else RL(234);
              if(flag='0')then RL(49)
@@ -617,7 +623,7 @@ CASE VERB OF
                   Vanish(2);Sc:=Sc+10;end
                 else RL(46)
               else begin RL(47);Ev:=Ev+['n'];Sc:=Sc+15;Vanish(52);end
-            else writeln('あなたが',n[noun,1],
+            else writeln('あなたが',m[noun,1],
                          'を消化できるとは思えない!');
 
 42         :case noun of
@@ -642,11 +648,11 @@ CASE VERB OF
              52:begin RL(34);Vanish(52);end;
              23:if(noun2=null)then RL(369)
                 else begin Vanish(noun2);Attack:=False;
-                 writeln('怪物は',n[noun2,1],'を掴み食べた!');
+                 writeln('怪物は',m[noun2,1],'を掴み食べた!');
                      end;
              7:begin RL(35);Vanish(7);r[52]:=Prm;Ev:=Ev+['I'];end
              else if(verb=0)then writeln('あと少しのところで',
-                 n[noun,1],'の命を奪うのを止めた!')
+                 m[noun,1],'の命を奪うのを止めた!')
                   else RL(216);
              end{of case}
              else Crazy;
@@ -682,7 +688,7 @@ CASE VERB OF
       case noun of
        1:begin;Crazy;Shots:=Shots+1;end;
        2,7,8,13,27,29,32,40,51,52,63,74,77,89:begin vanish(noun);
-          writeln(n[noun,1],'は爆発し、閃光の中に消えた!');
+          writeln(m[noun,1],'は爆発し、閃光の中に消えた!');
             if(noun=74)and(en('p'))then begin RL(232);DEAD;end;
          end;
        48:begin RL(222);RL(223);Ev:=Ev+['g'];p[40]:=p[40]-[48];
@@ -693,7 +699,7 @@ CASE VERB OF
           end;
        45:RL(315);
        60,56,44:begin RL(233);DEAD;end
-       else writeln('まばゆい光線が',n[noun,1],'に命中したが、',
+       else writeln('まばゆい光線が',m[noun,1],'に命中したが、',
                       '黒く焦げただけだった。');
       end {of shoot case}
           else if(noun=34)and(noun2=Null)then RL(213)
@@ -727,13 +733,13 @@ CASE VERB OF
                 if(Prm in[0..6,9,10,13,41..43])and(noun2 in[73,53,47])then
                   begin RL(306);vanish(noun);end;
                 if(noun2=23)then begin Attack:=False;Vanish(noun);RL(379);
-                  writeln(n[noun,1],'をキャッチして食べ、',
+                  writeln(m[noun,1],'をキャッチして食べ、',
                         '大きなゲップをした!')end;
                end
-              else begin writeln(n[noun,1],'と',
-                n[noun2,1],'をぶつけたが何も起こらなかった。');
+              else begin writeln(m[noun,1],'と',
+                m[noun2,1],'をぶつけたが何も起こらなかった。');
                 Vanish(noun);r[noun]:=Prm;end
-             else writeln(n[noun,1],'を持っていなければならない!')
+             else writeln(m[noun,1],'を持っていなければならない!')
             else Crazy;
 
 37         :if(noun=57)then
@@ -741,9 +747,9 @@ CASE VERB OF
               if not(noun2 in[1,15,17,22,30,46,47,50,52,72,73,79,80,83])then
                if(ropecon=Null)then begin
                 ropecon:=noun2;
-                writeln('ロープを',n[noun2,1],'にしっかりと結び付けた。');
+                writeln('ロープを',m[noun2,1],'にしっかりと結び付けた。');
                 if(noun2=57)then RL(48);end
-               else writeln('ロープはもう',n[ropecon,1],'に結ばれている。')
+               else writeln('ロープはもう',m[ropecon,1],'に結ばれている。')
               else RL(50)
              else Crazy
             else Crazy;
@@ -796,7 +802,7 @@ CASE Prm OF
        39  :if(en('o'))then
                if kitset=[] then begin RL(329);end
                else begin RL(330);for o:= 0 to 57 do
-                   if(o in kitset)then writeln('  ',n[o,1]);end
+                   if(o in kitset)then writeln('  ',m[o,1]);end
              else RL(331);
        57 :RL(10);
        73 :RL(19);
@@ -828,7 +834,7 @@ CASE Prm OF
        39  :if(en('o'))then
                if kitset=[] then begin RL(329);end
                else begin RL(330);for o:= 0 to 57 do
-                   if(o in kitset)then writeln('  ',n[o,1]);end
+                   if(o in kitset)then writeln('  ',m[o,1]);end
              else RL(331);
        35 :RL(12);
        73 :RL(19);
@@ -926,7 +932,7 @@ Case Prm of
   7    :RL(65);
   14    :if(noun in[57,70])then begin inven:=inven+[noun];r[noun]:=Null;
            if(noun=70)then Ev:=Ev-['d']
-           else Ev:=Ev-['t'];SA;writeln(n[noun,1],': 取った。');end;
+           else Ev:=Ev-['t'];SA;writeln(m[noun,1],': 取った。');end;
   45,49  :if(flasoff)then RL(14) else moveto(14);
    44    :RL(73);
   24,11:if(noun=17)and not(en('u'))then RL(74)
@@ -1167,7 +1173,7 @@ Case Prm of
           begin Ev:=Ev+['h'];RL(173);play(23,24,250);Sc:=Sc+30;
             if(PanelCon<>Null)then begin r[PanelCon]:=30;Code:='R';
              writeln('パネルの奥に',
-                      n[PanelCon,1],'がある。');end
+                      m[PanelCon,1],'がある。');end
             else RL(183);
           end
         else RL(172);
@@ -1181,7 +1187,7 @@ Case Prm of
         end;
  11,24:case noun of
    49:begin SA;if(en('h'))then if(PanelCon=Null)then RL(183)
-                 else writeln('パネルの奥に',n[PanelCon,1],'がある。')
+                 else writeln('パネルの奥に',m[PanelCon,1],'がある。')
                else RL(184);end;
    82:begin SA;writeln('年ダイヤルは',YearDial,'にセットされている。');end;
    24:begin SA;writeln('日ダイヤルは',DayDial,'にセットされている。');end;
@@ -1430,7 +1436,7 @@ Case Prm of
           if(en('k'))then
            begin RL(324);
             if(cabiset=[])then RL(339)else
-             for o:=0 to NMax do if(o in Cabiset)then writeln('',n[o,1])
+             for o:=0 to NMax do if(o in Cabiset)then writeln('  ',m[o,1])
            end
           else RL(299);
        end; {of 55}
@@ -1710,7 +1716,7 @@ Case Prm of
           25:RL(418);
           21:begin;RL(140);RL(141);end;
           68:if(SlotCon=Null)then RL(143) else
-              begin SA;writeln('スロットの中には',n[SlotCon,1],'がある。')end;
+              begin SA;writeln('スロットの中には',m[SlotCon,1],'がある。')end;
           58:if(SlotCon=77)and not(en('x'))then
               begin Ev:=Ev+['x'];Sc:=Sc+5;RS(75)end
              else if(SlotCon=77)then RS(77)else RL(385)
@@ -1730,9 +1736,9 @@ Case Prm of
    43,57  :moveto(3);
    6,17   :if(noun=57)and(here(40))and((noun2=40)or(noun2=Null))then
            begin RS(16);Sc:=-500;
-            Loc:='Locked Cabin';Verbose:=True;inven:=[];KitSet:=KitSet-[57];
+            Loc:='閉じたキャビン';Verbose:=True;inven:=[];KitSet:=KitSet-[57];
             n[57,1]:='plastic card';n[57,2]:='card';n[57,3]:='plastic';
-            n[57,4]:='elevato card';n[57,5]:='elevato';r[57]:=76;moveto(76)
+            n[57,4]:='elevato card';n[57,5]:='elevato';m[57,1]:='カード';r[57]:=76;moveto(76)
            end;
  33,19,2  :if(noun in[6,53,64])then moveto(3)
           end;
@@ -1828,6 +1834,7 @@ procedure ScreenDraw_PlayerInput;
    if(Loc<>'Civilization!')then READLN(LINE)else repeat;until false;
    if(Line='r')or(Line='repeat')then Line:=Again
    else Again:=Line;
+   Translate;
 
    gotoxy(1,23);TextColor(m3);writeln(chr_p(175));TextColor(m2);
   end;

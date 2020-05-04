@@ -171,7 +171,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
 29:s('チューブの中');31:s('医務室');58,69:s('シャトルの中');
 32:s('倉庫');33:s('寝室');
 35:s('動力室');36:s('1号貨物室');37:s('2号貨物室');
-38:s('3号貨物室');39:s('4号貨物室');40:s('大きな貨物の中');
+38:s('3号貨物室');39:s('4号貨物室');40:s('大きな檻の中');
 41:s('木の橋');42:s('破壊された端');43:s('南の端');
 44..46:s('砂だらけの道路');47:s('クレーターの端');48:s('クレーターの中');
 49:s('ビルの前');50:s('ロビー');51..54:s('オフィス');
@@ -215,9 +215,9 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
        if(o in Mov)then
          if(r[o]=Prm)then
           if not((Prm in[59..69])and(KeyHole)and(o=63))then
-           begin writeln('',n[o,1],'がある。');
+           begin writeln('',m[o,1],'がある。');
             if(here(ropecon))and(o=ropecon)and not(ropecon in inven)then
-             writeln('  ロープが',n[o,1],'に結び付けられている。');
+             writeln('  ロープが',m[o,1],'に結び付けられている。');
             if(en('d'))and(o=70)and(here(70))then RL(147);
             if(o=SlotCon)and(here(o))then RL(388);
             if(o in CabiSet)and(here(o))then RL(389);
@@ -400,7 +400,7 @@ procedure DropAll;
        if(o in inven)then
          begin
            r[o]:=Prm;
-           inven:=inven-[o];writeln(n[o,1],': 置いた。');
+           inven:=inven-[o];writeln(m[o,1],': 置いた。');
          end;
      RL(106);
    end;  {of DropAll}
@@ -507,10 +507,10 @@ function Present : Boolean;
       if(noun2<>Null)then
        if(here(noun2))then Present:=true
        else begin
-         writeln(n[noun2,1],'は見当たらない。');Present:=false end
+         writeln(m[noun2,1],'は見当たらない。');Present:=false end
       else Present:=true
      else begin
-       writeln(n[noun,1],'は見当たらない。');Present:=false end
+       writeln(m[noun,1],'は見当たらない。');Present:=false end
     else Present:=true
    end;
 
