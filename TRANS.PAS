@@ -7,9 +7,6 @@ begin
   fs := 0;
   fl := 0;
 
-  if ('A' <= Line[0]) and (Line[0] <= 'z') then
-    FindWord := False;
-
   for s := cur to Length(Line) do
   begin
     { ”š(–¼Œ)‚©? }
@@ -181,6 +178,9 @@ end;
 procedure Translate;
 var message, verb, noun1, prepos, noun2 : Str16;
 begin
+  if ('A' <= Line[1]) and (Line[1] <= 'z') then
+    exit;
+
   SayJ(message);
   if message <> '' then
   begin
