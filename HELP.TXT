@@ -1,23 +1,23 @@
                              BEYOND THE TITANIC
 
-To start:   Put the game disk in drive A:, if you have two disk drives put a
-            formatted disk (it can contain other files) into drive B:.
-            This will be the SAVE/RESTORE disk.  You must use DOS 2.0 or
-            later.
+始めかた:   A:ドライブにゲームディスクを挿入してください。もしドライブが2基あ
+            る場合は、フォーマットされたディスク(他のファイルが存在してもよい)
+            をドライブB:に挿入してください。これが保存/復帰ディスクになりま
+            す。DOS 2.0以降が必要です。
 
-            For game instructions type the following from the DOS A> prompt:
+            ゲームの説明が必要ならば、DOSのA>プロンプトで次のコマンドを入力し
+            てください:
 
             INSTRUCT  <enter>
 
-            This will list the game instructions to the screen.
+            画面にゲームの説明が表示されます。
 
-Game hints: Try examining things and explore all of the rooms, a map is a
-            must.  As you play the game draw out small boxes on of piece of
-            grid paper, with lines leading to surrounding boxes (representing
-            passages.)
+ヒント:     全ての部屋と物を調べてみてください。地図の作成は必須です。升目の
+            書かれた紙に小さな四角を書き、その周辺から線(通路)を書くとよいで
+            しょう。
 
-            If the game is played perfectly, it will take the you at least
-            350 moves to solve everything and return home (San Francisco.)
-            On average the game will take over 2500 moves to complete!
+            このゲームを制覇し家(サンフランシスコ)に帰還するには、少なくとも
+            350回のコマンド入力が必要です。通常のプレーならば2500回ほどになる
+            でしょう!
 
 

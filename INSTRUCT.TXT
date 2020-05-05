@@ -1,14 +1,12 @@
 
 
 
-
-                                 INSTRUCTIONS
-
-                                     FOR
                              ____________________
                             |                    |
                             | BEYOND THE TITANIC |
                             |____________________|
+
+                                    説明書
 
                        A Text & Sound Adventure Fantasy
 
@@ -22,25 +20,25 @@
 
 
 
-PLEASE NOTE THAT BEYOND THE TITANIC IS A SHAREWARE GAME.
+BEYOND THE TITANICはシェアウェアです。
+(訳者注: 現在はGPL2のオープンソースソフトウェアとなっています。)
                                          ---------
 
-The author asks that those who enjoy the game please pay $5 or $10 to help
-compensate the effort that went into programming Beyond the Titanic.  This
-small fee will also encourage the author to continue making new games, like
-the recently released Supernova and Kingdom of Kroz.
+Beyond the Titanicをプレーした人は、制作の対価として$5か$10の支払いをお願いし
+ます。このわずかな料金は、最近発表されたSupernovaやKingdom of Krozなどの新し
+いゲームにつながります。
 
-This payment will also register the payer for telephone support and clues.
+この料金は、電話サポート係への賃金にもなります。
 
-Please make checks payable to:
+支払先:
 
                 Scott Miller              (214) 240-0614
                 4206 Mayflower Dr.
                 Garland, TX  75043
 
-Please support the SHAREWARE concept, it benefits you the most.
+シェアウェアへの支持、協力をお願いします。
 
-Thank you and enjoy the game...
+ありがとうございました。ゲームをお楽しみください…
 
 Scott Miller
 
@@ -49,60 +47,75 @@ Scott Miller
 
 
 
-The STORY
+ストーリー
 ------------------------------------------------------------------------------
 
-    As the game begins you find yourself standing on board the Titanic, on her
-maiden voyage.  Of course, that particular voyage was never completed!
-    Your goal is to survive and somehow get back to your home in the United
-States.
-    Most of your time will be spent solving numerous problems and dangers that
-arise, like starvation and drowning.  If you've played any of Infocom's famous
-text games you will notice that Beyond the Titanic is quite similar to Zork
-and Planetfall.
-    Hints:  Examine everything and make a map as you move through the many
-game locations.  There are not any puzzles that cannot be solved logically;
-apply an "If I were really there, I would do this..." type of attitude.
-    To add to the game's realism sound effects are used throughout the game.
+  ゲームはタイタニック号の最初の航海から始まります。もちろんその航海は永遠に達
+成されません!
+  あなたの目的は生き延びて合衆国にある家に帰ることです。
+  多くの時間を数々の謎を解くことや、迫り来る危機(飢えや浸水)に立ち向かうことに
+なります。もしInfocomのZorkやPlanetfallのようなテキストアドベンチャーで遊んだ
+ことがあれば、Beyond the Titanicはそれとよく似ていることに気づくでしょう。
+  ヒント: あらゆる物を調べ、訪れた場所の地図を作りましょう。謎は論理的に解くよ
+うなものではなく、「もし本当にその状況ならば、自分はどうするだろう…」タイプの
+ものです。
+  さらに、この効果音がゲーム全体で使われています。
 
 
 
 
 
-LOADING
+ロード
 ------------------------------------------------------------------------------
 
-Game setup for single disk drive:
+ドライブが1基の場合:
 
-1)  Insert the GAME disk.
-2)  Type in BEYOND and press the <enter> button.
-3)  When the "Do you have a colr screen?" question appears, press Y or N.
-4)  When the "How many disk drives do you have?" question appears, press
-    the number 1.
-5)  The game will begin.
+1)  ゲームディスクを挿入する
+2)  BEYONDと入力して<エンター>キーを押す
+3)  「ディスプレイはカラーですか?」の問にYまたはNで答える
+4)  「ドライブはいくつあるますか? 」の問で1を押す
+5)  ゲームが始まる
 
-Game setup for two disk drives:
+ドライブが2基の場合:
 
-1)  Insert the GAME disk into drive A:
-2)  Insert your SAVE/RESTORE disk into drive B:
-3)  Type in BEYOND and press the <enter> button.
-4)  When the "Do you have a colr screen?" question appears, press Y or N.
-4)  When the "How many disk drives do you have?" question appears, press
-    the number 2.
-6)  The game will begin.
+1)  ゲームディスクをA:ドライブに挿入する
+2)  保存/復帰ディスクをB:に挿入する
+3)  BEYONDと入力して<エンター>キーを押す
+4)  「ディスプレイはカラーですか?」の問にYまたはNで答える
+5)  「ドライブはいくつあるますか? 」の問で2を押す
+6)  ゲームが始まる
 
-The VERBS
+動詞
 ------------------------------------------------------------------------------
 
-    Beyond the Titanic has a vocabulary of over 750 words--more than most
-text adventures sold commercially.  Here is a sampling of the verbs
-understood by the game's parser.
-EXAMINE (or EX for short)
-INVENTORY (or I)
-NORTH, SOUTH, NORTHWEST, UP, DOWN, IN, OUT, etc. (or first letter)
+  Beyond the Titanicでは、大半の市販のテキストアドベンチャーよりも多い750の単
+語が使えます。以下はこのゲームが理解できる動詞の例です。
+
+調べる
+持ち物
+北  南  北西  上  下  入る  出る 等
+取る  置く
+押す  引く  動かす  触る
+見る  中を見る  後ろを見る  下を見る  上を見る 等
+着る  脱ぐ
+結ぶ  解く
+入れる  挿す
+開く  開く
+合わせる
+探す          這って進む
+言う          入力する
+切る          ヘルプ
+ジャンプする  振る
+寝る          飛ぶ
+踊る          やり直す
+
+(英語の場合)
+EXAMINE (または EX)
+INVENTORY (または I)
+NORTH, SOUTH, NORTHWEST, UP, DOWN, IN, OUT, 等 (または最初の1文字)
 GET, DROP
 PUSH, PULL, MOVE, PRESS, TOUCH
-LOOK, LOOK INSIDE, LOOK BEHIND, LOOK THROUGH, LOOK UNDER, LOOK ON, etc.
+LOOK, LOOK INSIDE, LOOK BEHIND, LOOK THROUGH, LOOK UNDER, LOOK ON, 等
 WEAR, TAKE OFF
 TIE, UNTIE
 PUT, INSERT
@@ -117,20 +130,44 @@ DANCE                           FALL
 
 
 
-Example structures:
+文章の例:
 
-TIE [object] (TO, AROUND) [object] - usually used with a rope.
-EX [object] - used to study an object closely.
+[何か(通常はロープ)]を[何か]に結ぶ
+[何か]を調べる - 近くにあるものについて知るために使う
+[何か]を[誰か]に与える
+[何か]を[何か]に入れる
+[何か]を言う - 別の人物と会話する場合に使う
+[何か]を入力する - キーボードなどに入力する場合に使う
+[何か]を[番号]に合わせる - ダイヤルで使う
+[何か]を[何か]で開ける
+
+(英語の場合)
+TIE [object] (TO, AROUND) [object]
+EX [object]
 GIVE [object] TO [object]
-PUT [object] (WITHIN, UNDER, ON, BESIDE, BEHIND, etc.) [object]
-SAY [something] - used to converse with other game characters.
-TYPE [something] - used to enter data on a keyboard device.
-TURN [object] or TURN [object] to [position] - used for dials.
+PUT [object] (WITHIN, UNDER, ON, BESIDE, BEHIND, 等) [object]
+SAY [something]
+TYPE [something]
+TURN [object] または TURN [object] to [position]
 OPEN [object] WITH [object]
 
 
-Example Sentences:
+状況の例:
 
+> ナイフを取る
+> ナイフを壁に投げる
+
+> 東
+> 北
+> ハッチを開ける
+> 下
+> スクリーンを見る
+> スクリーンを壊す
+
+> 怪物を銃で撃つ
+> 南
+
+(英語の場合)
 >> PICK UP THE KNIFE THEN THROW IT AT THE WALL
 >> E.N.OPEN HATCH THEN CLIMB DOWN THE LADDER. READ SCREEN. BREAK IT.
 >> SHOOT THE CREATURE WITH THE GUN PLEASE, THEN RUN SOUTH!
@@ -138,25 +175,22 @@ Example Sentences:
 
 
 
-The COMMANDS
+コマンド
 ------------------------------------------------------------------------------
 
-    Here's a list of the major commands you will need to know in order to play
-Beyond the Titanic.
+  以下はBeyond the Titanicをプレーするために必要なコマンドです。
 
-QUIT - ends the current game.
-SAVE - allows you to save your present game location.  Use a separate formatted
-       disk.  Up to 26 SAVE files per disk.  SAVE names can be up to eight
-       letters long.  To resume a previously SAVED game use the RESTORE
-       command.
-RESTORE - allows you to restore a SAVED game location.
-DIAGNOSE - reveals your health, appetite, etc.
-LOOK (or L) - does a brief examination of your current game location.
-REPEAT (or R) - repeats your last line of commands.
-WAIT (or Z) - lets one move pass without any action.
-SCORE - gives you your current ranking.
-ROOM DESCRIPTION (or RD) - toggles between full room descriptions or brief
-    room descriptions.
+終了(QUIT) - ゲームを終了します
+保存(SAVE) - 現在の状況を保存します。フォーマットされたディスクが必要です。
+             最大26まで保存できます。ファイル名は最大8文字です。保存されたゲー
+             ムに復帰するためには「復帰(RESTORE)」コマンドを使います
+復帰(RESTORE) - 保存された状況に復帰する
+状態(DIAGNOSE) - あなたの健康状態、栄養状態を表示します
+見る(LOOK) - 現在の状況を説明します
+REPEAT (または R) - 最後のコマンドを繰り返します
+待つ(WAIT または Z) - 何もせず1回行動をパスします
+得点 - 現在のランクを表示します
+記述(ROOM DESCRIPTION または RD) - ゲームの描写の詳細と簡易を切り替えます
 
 
 
@@ -164,18 +198,18 @@ ROOM DESCRIPTION (or RD) - toggles between full room descriptions or brief
 
 
 
-MISCELLANEOUS
+その他
 ------------------------------------------------------------------------------
 
-    Beyond the Titanic only recognizes the first SEVEN letters of any word or
-command.  (Note: Infocom games only use the first SIX letters.)
-    The word AND is not understood.  You cannot say, for example, GET GUN
-AND ROPE, or PUT ROPE AND KNIFE IN SACK.
-    With the verbs GET and DROP you may refer to every object by saying
-GET ALL or DROP ALL.  The word ALL is not accepted anywhere else.
+  Beyond the Titanicは単語の先頭7文字しか受け付けません(メモ: Infocomのゲーム
+はは6文字です)。
+  単語はANDでつなげません。例えば、GET GUN AND ROPE や
+PUT ROPE AND KNIFE IN SACK は不可能です。
+  「全て取る(GET ALL)」や「全て置く(DROP ALL)」で全てのものを取ったり置いたり
+できます。全ての動詞で「全て(ALL)」が使えるわけではありません。
     It is a good idea to draw a map as you find new rooms in the game.
-Without a map it is easy to get lost, or it might be difficult to find a
-room you need to get to in a hurry.
+  新しい部屋に到達するたびに地図を作るのはよい方針です。地図がなければ簡単に迷
+ったり、目的の部屋に素早く移動できなくなります。
 
 *** END OF FILE ***
 
