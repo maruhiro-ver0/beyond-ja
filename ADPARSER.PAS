@@ -338,7 +338,7 @@ procedure Check(var SepWord : Str16);
                   ' above against through beside behind around down '+
                   ' inside by under using near over onto top below '+
                   ' from away want across ')>0 then begin
-             write('''',Word);RL(393)end
+             write('「',Word);RL(393)end
            else writeln('「',Word,'」という言葉はわからない。');
      'b'  :begin
             if pos(' ',Word)>0 then delete(Word,pos(' ',Word),9);

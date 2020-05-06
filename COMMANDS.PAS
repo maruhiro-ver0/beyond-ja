@@ -120,7 +120,7 @@ procedure Home;
 
 procedure Say(o : integer; p : Str16);
    begin
-     writeln(n[o,1],'‚ÍŠù‚É',p,'B'); SA
+     writeln(m[o,1],'‚ÍŠù‚É',p,'B'); SA
    end;
 
 procedure Diagnose;
