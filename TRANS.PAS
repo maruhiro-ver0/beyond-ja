@@ -204,6 +204,7 @@ begin
 end;
 
 { Convert full width numbers/alphabets to half width }
+const hchrs : Str80 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 procedure FullToHalf;
 var i, c : integer;
 begin
@@ -220,7 +221,7 @@ begin
       else
       begin
         Delete(Line, i, 2);
-        Insert('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'[Trunc(c / 2) + 1], Line, i);
+        Insert(hchrs[Trunc(c / 2) + 1], Line, i);
         i := i + 1;
       end;
     end;

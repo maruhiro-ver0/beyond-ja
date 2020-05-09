@@ -34,3 +34,11 @@ Beyond the Titanicは80x25ターミナルコンソールが最も適していま
 
 
 著者: Samuel Brian
+
+
+## 日本語版の注意点
+
+* Linuxでプレーする場合は, 端末エミュレータの文字コードをShiftJISに設定してく
+  ださい。
+* Windowsでビルドする場合は, crt.pas.win32のファイル名をcrt.pasに名前を変えて
+  からMake-Win32.batまたはMake-Win64.batを実行してください。

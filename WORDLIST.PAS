@@ -35,7 +35,7 @@ procedure Assign1;
 begin
 for x:= 0 to VMax do for y:= 1 to 5 do v[x,y]:=Q;
 v[0,1]:='attack'; v[0,2]:='kill';v[0,3]:='beat up';
-d[0,1]:='‚ğUŒ‚';d[0,2]:='‚ğE';d[0,3]:='‚ğ“|';
+d[0,1]:='UŒ‚';d[0,2]:='E';d[0,3]:='“|';
 prep[0]:='with';
 v[1,1]:='descrip';v[1,2]:='rd';v[1,3]:='r d';
 d[1,1]:='‹Lq';
