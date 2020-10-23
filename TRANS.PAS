@@ -149,7 +149,7 @@ begin
   { 3rd word }
   if not FindWord(cur, cat, index, word) then
     exit;
-  if cat = 0 then {verb }
+  if cat = 0 then { verb }
   begin
     if (noun2 <> '') and (prepos = '') then
     begin
