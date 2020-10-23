@@ -216,7 +216,7 @@ if((en('a'))and(here(29)))or not(Prm in [6..24])then begin
          if(r[o]=Prm)then
           if not((Prm in[59..69])and(KeyHole)and(o=63))then
            begin writeln('',m[o,1],'がある。');
-            if(here(ropecon))and(o=ropecon)and not(ropecon in inven)then
+            if(ropecon<>Null)and(here(ropecon))and(o=ropecon)and not(ropecon in inven)then
              writeln('  ロープが',m[o,1],'に結び付けられている。');
             if(en('d'))and(o=70)and(here(70))then RL(147);
             if(o=SlotCon)and(here(o))then RL(388);
@@ -424,9 +424,9 @@ procedure MoveTo(NewRm : integer);
           begin RL(55);inven:=inven-[57];r[57]:=Prm;end
    else if not(57 in inven)and((ropecon in inven)or
           (ropecon in[60,56,44]))then r[57]:=NewRm
-   else if not(57 in inven)and(r[57]=Prm)and(r[ropecon]=NewRm)then
+   else if not(57 in inven)and(r[57]=Prm)and(ropecon<>Null)and(r[ropecon]=NewRm)then
           begin r[57]:=NewRm;RopeOld:=Prm;end
-   else if not(57 in inven)and(r[57]=Prm)and(NewRm=RopeOld)and
+   else if not(57 in inven)and(r[57]=Prm)and(NewRm=RopeOld)and(ropecon<>Null)and
               (r[ropecon]=Prm)then
           begin r[57]:=RopeOld;RopeOld:=Null;end;
    if(ropecon=Null)or((NewRm<>RopeOld)and(Prm<>RopeOld))then RopeOld:=Null;
