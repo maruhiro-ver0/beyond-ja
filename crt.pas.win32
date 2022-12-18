@@ -359,6 +359,12 @@ begin
 	SetConsoleMode(output, ENABLE_PROCESSED_OUTPUT or ENABLE_WRAP_AT_EOL_OUTPUT);
 	SetConsoleMode(input, ENABLE_PROCESSED_INPUT or ENABLE_LINE_INPUT or ENABLE_ECHO_INPUT);
 
+	r.Top := 0;
+	r.Left := 0;
+	r.Right := 1;
+	r.Bottom := 1;
+	SetConsoleWindowInfo(output, true, r);
+
 	xy.x := WIDTH;
 	xy.y := HEIGHT;
 	SetConsoleScreenBufferSize(output, xy);
