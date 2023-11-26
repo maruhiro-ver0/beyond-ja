@@ -38,7 +38,7 @@ uses
 
 const
 	WIDTH = 80;
-	HEIGHT = 26;
+	HEIGHT = 25;
 	SPACE = '                                                                                ';
 
 var

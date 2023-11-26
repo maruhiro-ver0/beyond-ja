@@ -3,17 +3,19 @@
 *エキサイティングな冒険の世界に飛び込む準備をしてください…*
 
 ```
-  ゲームはタイタニック号の最初の航海から始まります。もちろんその航海は永遠に達
-成されません!
+  ゲームはタイタニック号の最初の航海から始まります。もちろんその航海は永遠に達成されません!
   あなたの目的は生き延びて合衆国にある家に帰ることです。
 ```
 
-これは1986年のScott MillerのMS-DOS用ゲームBeyond the TitanicのFree Pascal移植
-版です。
+これは1986年のScott MillerのMS-DOS用ゲームBeyond the TitanicのFree Pascal移植版を日本語に翻訳したものです。
 元のソースとバイナリは
 [3D Realms website](http://legacy.3drealms.com/news/2009/03/several_old_games_released_as_freeware.html)
 または
 [archive.org](https://archive.org/details/BeyondTitanic_source).
+にあります。
+
+Samuel BrianによるFreePascal移植版は
+[github](https://github.com/samuelbrian/beyond-the-titanic)
 にあります。
 
 Beyond the Titanicは80x25ターミナルコンソールが最も適しています。
@@ -31,9 +33,6 @@ Beyond the Titanicは80x25ターミナルコンソールが最も適していま
 
 * 入力プロンプトが正しくない (Linux)
 * サウンドが再生されない (Linux)
-
-
-著者: Samuel Brian
 
 
 ## 日本語版の注意点
