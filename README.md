@@ -15,7 +15,7 @@
 にあります。
 
 Samuel BrianによるFreePascal移植版は
-[github](https://github.com/samuelbrian/beyond-the-titanic)
+[https://github.com/samuelbrian/beyond-the-titanic](https://github.com/samuelbrian/beyond-the-titanic)
 にあります。
 
 Beyond the Titanicは80x25ターミナルコンソールが最も適しています。
