@@ -1,4 +1,4 @@
-# タイタニックを超えて Beyond the Titanic
+# タイタニックを越えて Beyond the Titanic
 
 *エキサイティングな冒険の世界に飛び込む準備をしてください…*
 
